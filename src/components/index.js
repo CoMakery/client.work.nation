@@ -1,6 +1,7 @@
-// Usage:
-//   import { ClaimSkill, Intention } from 'components'
-
 export App from './App/App'
-export Rate from './ClaimSkill/ClaimSkill'
-export Routes from './Routes/Routes'
+export ClaimSkill from './ClaimSkill/ClaimSkill'
+export Home from './Home/Home'
+export Login from './Login/Login'
+export Logout from './Logout/Logout'
+export Profile from './Profile/Profile'
+export Projects from './Projects/Projects'

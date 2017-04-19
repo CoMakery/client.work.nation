@@ -1,35 +1,45 @@
-import { d } from 'lightsaber/lib/log'
+import {d} from 'lightsaber/lib/log'
 import React from 'react'
+
+import UportUser from '../../models/UportUser'
 import './ClaimSkill.css'
 
-export default class Rate extends React.Component {
+export default class ClaimSkill extends React.Component {
   constructor(props) {
     super(props)
+    if (!props.currentUser) {
+      this.props.history.push('/login')
+    }
     this.state = {
+      skill: ''
     }
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault()
-    this.state.uportUser.claimSkill(this.state.skill)
-    .then(() => d('success'))
-    .catch(error => console.error(error))
+  handleSubmit = (event) => {
+    event.preventDefault()
+    UportUser.claimSkill(this.props.currentUser, this.state.skill)
   }
 
   updateOptions = (event) => {
     let newState = {}
     newState[event.target.id] = event.target.value
-    this.setState(newState, () => d(this.state))
+    this.setState(newState)
   }
 
   render() {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <label>
-            <input type='text' id='skill' value={this.state.skill} onChange={this.updatOptions} />
-          </label>
-          <input type='submit' value='>' />
+          <div className="row">
+            <div className="columns expand">
+              <label>
+                <input type="text" id="skill" value={this.state.skill} onChange={this.updateOptions} />
+              </label>
+            </div>
+            <div className="columns shrink">
+              <input type="submit" value=">" className="button" />
+            </div>
+          </div>
         </form>
       </div>
     )
