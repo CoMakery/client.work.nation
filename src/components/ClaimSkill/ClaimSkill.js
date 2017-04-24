@@ -2,7 +2,6 @@ import {d} from 'lightsaber/lib/log'
 import React from 'react'
 
 import UportUser from '../../models/UportUser'
-import './ClaimSkill.css'
 
 export default class ClaimSkill extends React.Component {
   constructor(props) {

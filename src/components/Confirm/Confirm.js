@@ -6,9 +6,8 @@ import {d} from 'lightsaber/lib/log'
 import React from 'react'
 
 import UportUser from '../../models/UportUser'
-import './Projects.css'
 
-export default class Projects extends React.Component {
+export default class Confirm extends React.Component {
 
   constructor(props) {
     super(props)
@@ -19,7 +18,7 @@ export default class Projects extends React.Component {
   }
 
   componentDidMount() {
-    const serverUrl = `http://localhost:3000/users`  // TODO: server `/projects` endpoint
+    const serverUrl = `${process.env.REACT_APP_API_SERVER}/users`  // TODO: server `/projects` endpoint
     axios.get(serverUrl).then(response => {
       if (isPresent(response.data)) {
         this.setState({users: response.data}) //, () => d(this.state))
@@ -56,10 +55,16 @@ export default class Projects extends React.Component {
     // If no errors:
     return (
       <div>
-        <h2>My Project Feed</h2>
-        <h3>Project Neptune</h3>
+        <h2>Confirmation Feed</h2>
         <table>
           <tbody>
+            <tr>
+              <td>Date</td>
+              <td>Project Name</td>
+              <td>Team Member</td>
+              <td>Skill</td>
+              <td>Confirm</td>
+            </tr>
             { this.rows() }
           </tbody>
         </table>
@@ -72,8 +77,9 @@ export default class Projects extends React.Component {
     return this.state.users.map((user) => {
       return user.skills.map((skill) => {
         return <tr>
-          <td>[avatar]</td>
-          <td>{user.name || '[Name unknown]'}</td>
+          <td>17 April 2017</td>
+          <td>Project Neptune</td>
+          <td>[avatar] {user.name || '[Name unknown]'}</td>
           <td>{skill.name}</td>
           {this.confirmationColumns(skill)}
         </tr>
@@ -83,10 +89,11 @@ export default class Projects extends React.Component {
 
   confirmationColumns = (skill) => {
     if (this.props.currentUser) {
-      return [
-        <td key={skill.ipfsReputonKey + '-unconfirm'}>[ O ]</td>,
-        <td key={skill.ipfsReputonKey + '-confirm'}><span className="button" onClick={this.handleConfirm} data-skill={skill.ipfsReputonKey}>[ O ]</span></td>,
-      ]
+      return <td key={skill.ipfsReputonKey + '-confirm'}>
+        <span onClick={this.handleConfirm} data-skill={skill.ipfsReputonKey}>
+          <img src="/static/images/icon_confirm.png" />
+        </span>
+      </td>
     }
   }
 

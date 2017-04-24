@@ -28,9 +28,13 @@ export default class UportUser {
     .then((credentials) => {
       const uportAddress = credentials.address
       this.setCurrentUser(uportAddress)
-      window.sessionStorage.setItem(this.SESSION_KEY, uportAddress)
+      this.saveCurrentUser(uportAddress)
       return credentials
     }).catch(console.error)
+  }
+
+  static saveCurrentUser(uportAddress) {
+    window.sessionStorage.setItem(this.SESSION_KEY, uportAddress)
   }
 
   static logout() {
@@ -97,7 +101,7 @@ export default class UportUser {
     })
   }
 
-  static handleIpfsResult(err, result) {
+  static handleIpfsResult(err, _result) {
     if (err) throw err
   }
 

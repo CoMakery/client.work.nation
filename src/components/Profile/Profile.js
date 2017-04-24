@@ -4,8 +4,6 @@ import axios from 'axios'
 import {d} from 'lightsaber/lib/log'
 import React from 'react'
 
-import './Profile.css'
-
 export default class Profile extends React.Component {
 
   constructor(props) {
@@ -19,11 +17,12 @@ export default class Profile extends React.Component {
   }
 
   componentDidMount() {
-    const serverUrl = `http://localhost:3000/users/${this.state.uportAddress}`
+    const serverUrl = `${process.env.REACT_APP_API_SERVER}/users/${this.state.uportAddress}`
     axios.get(serverUrl).then(response => {
       if (isPresent(response.data)) {
+        d(response.data)
         const newData = omit(response.data, 'uportAddress')
-        this.setState(newData)
+        this.setState(newData, () => d({state: this.state}))
       } else {
         this.addError(`No data found for user ${this.state.uportAddress}`, `Server URL: ${serverUrl}`)
       }
@@ -53,6 +52,7 @@ export default class Profile extends React.Component {
     // If no errors:
     return (
       <div>
+        {this.avatar()}
         <h3><a href={'https://ropsten.io/address/' + this.state.uportAddress}>{this.state.name}</a></h3>
         <h3>Skills</h3>
         <table>
@@ -79,5 +79,11 @@ export default class Profile extends React.Component {
         <td>{skill.projectCount}</td>
       </tr>
     })
+  }
+
+  avatar = () => {
+    if (this.state.avatar_image_ipfs_key) {
+      return <img src={'//ipfs.io/ipfs/' + this.state.avatar_image_ipfs_key} />
+    }
   }
 }
