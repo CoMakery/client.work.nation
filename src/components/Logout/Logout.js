@@ -1,11 +1,11 @@
 import { d } from 'lightsaber/lib/log'
 import React from 'react'
 
-import UportUser from '../../models/UportUser'
+import Auth from '../../models/Authentication'
 
 export default class Logout extends React.Component {
   componentWillMount() {
-    UportUser.logout()
+    Auth.logout()
     this.props.history.push('/')
   }
 

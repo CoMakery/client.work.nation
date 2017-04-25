@@ -2,7 +2,7 @@ import {d} from 'lightsaber/lib/log'
 import React from 'react'
 import {BrowserRouter, Link, Route, Switch} from 'react-router-dom'
 
-import UportUser from '../../models/UportUser'
+import Auth from '../../models/Authentication'
 import {Confirm, Home, Login, Logout, Project, Root, Search} from '..'
 import '../../../node_modules/foundation-sites/dist/css/foundation-flex.css'  // Foundation with FlexGrid: http://foundation.zurb.com/sites/docs/flex-grid.html
 import './App.scss'
@@ -11,9 +11,9 @@ export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      currentUser: UportUser.getCurrentUser()  // uPort address of "logged in" user
+      currentUser: Auth.getCurrentUser()
     }
-    UportUser.setCurrentUserHandler(this.setCurrentUser)
+    Auth.setCurrentUserHandler(this.setCurrentUser)
   }
 
   setCurrentUser = (currentUser) => {
