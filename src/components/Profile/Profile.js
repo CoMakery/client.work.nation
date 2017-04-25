@@ -17,12 +17,16 @@ export default class Profile extends React.Component {
   }
 
   componentDidMount() {
+    if (!this.state.uportAddress) {
+      this.addError(`Can't load user "null"`)
+      return
+    }
     const serverUrl = `${process.env.REACT_APP_API_SERVER}/users/${this.state.uportAddress}`
     http.get(serverUrl).then(response => {
       if (isPresent(response.data)) {
-        d(response.data)
+        // d(response.data)
         const newData = omit(response.data, 'uportAddress')
-        this.setState(newData, () => d({state: this.state}))
+        this.setState(newData) //, () => d({state: this.state}))
       } else {
         this.addError(`No data found for user ${this.state.uportAddress}`, `Server URL: ${serverUrl}`)
       }
@@ -34,7 +38,7 @@ export default class Profile extends React.Component {
   addError(message, details) {
     let errors = clone(this.state.errors)
     errors.push([message, details])
-    this.setState({errors}, () => d({state: this.state}))
+    this.setState({errors}) // , () => d({state: this.state}))
   }
 
   render() {

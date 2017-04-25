@@ -4,6 +4,8 @@ import IPFS from 'ipfs-mini'
 import Promise from 'bluebird'
 import moment from 'moment'
 
+import Auth from './Authentication'
+
 const ipfs = new IPFS({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' })
 
 const appName = 'Work.nation'
@@ -18,7 +20,6 @@ const claims = claimContract.at(contractAddress)
 
 export default class UportUser {
   REPUTON_ASSERTION_CONFIRM = 'confirm'
-  SESSION_KEY = 'worknation_current_user_uport_address'  // Note that attempting to impersonate another uPort address will result in invalid reputons, which are ignored
 
   static login() {
     return connect.requestCredentials(
@@ -27,19 +28,9 @@ export default class UportUser {
     )
     .then((credentials) => {
       const uportAddress = credentials.address
-      this.setCurrentUser(uportAddress)
-      this.saveCurrentUser(uportAddress)
+      Auth.setCurrentUser(uportAddress)
       return credentials
     }).catch(console.error)
-  }
-
-  static saveCurrentUser(uportAddress) {
-    window.sessionStorage.setItem(this.SESSION_KEY, uportAddress)
-  }
-
-  static logout() {
-    this.setCurrentUser(null)
-    window.sessionStorage.clear()
   }
 
   static claimSkill(currentUser, skill) {
@@ -121,14 +112,5 @@ export default class UportUser {
 
   static isValidAddress(candidate) {
     return /(0x)?[0-9a-fA-F]{40}/.test(candidate)
-  }
-
-  // should only be called once, at app start, to initiate state
-  static getCurrentUser() {
-    return window.sessionStorage.getItem(this.SESSION_KEY)
-  }
-
-  static setCurrentUserHandler(setCurrentUser) {
-    this.setCurrentUser = setCurrentUser
   }
 }

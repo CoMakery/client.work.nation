@@ -1,9 +1,10 @@
 import React from 'react'
 
+import Auth from '../../models/Authentication'
+
 export default class Project extends React.Component {
   constructor(props) {
     super(props)
-    if (!props.currentUser) props.history.push('/login')
 
     this.state = {
       title: '',
@@ -13,6 +14,10 @@ export default class Project extends React.Component {
       imageUrl: '',
       placeholderImageUrl: '/static/images/rocketship.png',
     }
+  }
+
+  componentWillMount() {
+    Auth.redirectUnlessLoggedIn(this.props)
   }
 
   updateOptions = (event) => {

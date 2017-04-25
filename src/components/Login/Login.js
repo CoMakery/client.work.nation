@@ -2,6 +2,7 @@ import { d } from 'lightsaber/lib/log'
 import React from 'react'
 
 import UportUser from '../../models/UportUser'
+import Auth from '../../models/Authentication'
 
 export default class Login extends React.Component {
   componentDidMount() {
@@ -21,8 +22,7 @@ export default class Login extends React.Component {
 
   demoLogin = (event) => {
     const uportAddress = event.target.dataset.uport
-    UportUser.setCurrentUser(uportAddress)  // App level
-    UportUser.saveCurrentUser(uportAddress) // browser storage level
+    Auth.setCurrentUser(uportAddress)
     this.props.history.push('/home')
   }
 
