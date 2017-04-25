@@ -1,14 +1,13 @@
 import {d} from 'lightsaber/lib/log'
 import React from 'react'
 
+import Nav from '../../util/nav'
 import UportUser from '../../models/UportUser'
 
 export default class ClaimSkill extends React.Component {
   constructor(props) {
     super(props)
-    if (!props.currentUser) {
-      this.props.history.push('/login')
-    }
+    Nav.redirectUnlessLoggedIn(props.currentUser)
     this.state = {
       skill: ''
     }
