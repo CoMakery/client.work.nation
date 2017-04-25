@@ -13,7 +13,7 @@ export default class Login extends React.Component {
     .then((credentials) => {
       if (credentials) {
         d('logged in:', credentials)
-        this.props.history.push(`/profile/${credentials.address}`)
+        this.props.history.push('/home')
       }
     })
     .catch(error => console.error(error))
@@ -23,7 +23,7 @@ export default class Login extends React.Component {
     const uportAddress = event.target.dataset.uport
     UportUser.setCurrentUser(uportAddress)  // App level
     UportUser.saveCurrentUser(uportAddress) // browser storage level
-    this.props.history.push(`/profile/${uportAddress}`)
+    this.props.history.push('/home')
   }
 
   render() {
