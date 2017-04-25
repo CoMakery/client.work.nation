@@ -6,7 +6,6 @@ import UportUser from '../../models/UportUser'
 export default class ClaimSkill extends React.Component {
   constructor(props) {
     super(props)
-    if (!props.currentUser) props.history.push('/login')
     this.state = {
       skill: ''
     }
@@ -37,7 +36,7 @@ export default class ClaimSkill extends React.Component {
               </label>
             </div>
             <div>
-              <input type="submit" value=">" className="button" />
+              <input type="submit" value="add" className="button" />
             </div>
           </div>
         </form>

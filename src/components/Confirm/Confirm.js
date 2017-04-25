@@ -6,6 +6,7 @@ import {d} from 'lightsaber/lib/log'
 import React from 'react'
 
 import UportUser from '../../models/UportUser'
+import Auth from '../../models/Authentication'
 
 export default class Confirm extends React.Component {
 
@@ -15,6 +16,10 @@ export default class Confirm extends React.Component {
       uportAddress: this.props.match.params.uportAddress,
       errors: [],
     }
+  }
+
+  componentWillMount() {
+    Auth.redirectUnlessLoggedIn(this.props)
   }
 
   componentDidMount() {
