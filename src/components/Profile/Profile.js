@@ -9,7 +9,7 @@ export default class Profile extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      uportAddress: this.props.match.params.uportAddress,
+      uportAddress: this.props.uportAddress,
       name: null,
       skills: [],
       errors: [],

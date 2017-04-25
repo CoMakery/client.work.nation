@@ -30,12 +30,15 @@ export default class ClaimSkill extends React.Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           <div className="row">
-            <div className="columns expand">
+            <div>
               <label>
-                <input type="text" id="skill" value={this.state.skill} onChange={this.updateOptions} />
+                <input type="text" id="skill" value={this.state.skill} onChange={this.updateOptions} placeholder="Skill" />
+              </label>
+              <label>
+                <input type="text" id="project" value={this.state.project} onChange={this.updateOptions} placeholder="Project" />
               </label>
             </div>
-            <div className="columns shrink">
+            <div>
               <input type="submit" value=">" className="button" />
             </div>
           </div>

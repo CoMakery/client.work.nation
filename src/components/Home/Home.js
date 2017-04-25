@@ -1,16 +1,15 @@
 import { d } from 'lightsaber/lib/log'
 import React from 'react'
 
-export default class Logout extends React.Component {
-  componentWillMount() {
-    if (this.props.currentUser) {
-      this.props.history.push('/profile/' + this.props.currentUser)
-    } else {
-      this.props.history.push('/login')
-    }
-  }
+import {ClaimSkill, Profile} from '..'
+
+export default class Home extends React.Component {
 
   render() {
-    return null
+    return <div>
+      <ClaimSkill {...this.props} />
+      <Profile {...this.props} uportAddress={this.props.currentUser} />
+    </div>
   }
 }
+

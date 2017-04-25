@@ -3,7 +3,7 @@ import React from 'react'
 import {BrowserRouter, Link, Route, Switch} from 'react-router-dom'
 
 import UportUser from '../../models/UportUser'
-import {Confirm, Home, Login, Logout, Profile, Project, Search} from '..'
+import {Confirm, Home, Login, Logout, Project, Root, Search} from '..'
 import '../../../node_modules/foundation-sites/dist/css/foundation-flex.css'  // Foundation with FlexGrid: http://foundation.zurb.com/sites/docs/flex-grid.html
 import './App.scss'
 
@@ -24,7 +24,7 @@ export default class App extends React.Component {
     return (
       <BrowserRouter>
         <div>
-          <Link to="/"><h1>Work.nation</h1></Link>
+          <h1>Work.nation</h1>
           {this.menu()}
           <hr />
           {this.routes()}
@@ -36,7 +36,7 @@ export default class App extends React.Component {
   menu = () => {
     if (this.state.currentUser) {   // need to store this in state to get it to render properly
       return <ul className="menu vertical">
-        <li><Link to={'/profile/' + this.state.currentUser}>[Avatar Image]</Link></li>
+        <li><Link to="/home">[Avatar Image]</Link></li>
         <li><Link to="/confirm"><img src="/static/images/icon_confirm.png" /></Link></li>
         <li><Link to="/search"><img src="/static/images/icon_Search.png" /></Link></li>
         <li><Link to="/project"><img src="/static/images/icon_ProjSetup.png" /></Link></li>
@@ -52,11 +52,11 @@ export default class App extends React.Component {
   routes = () => {
     return <Switch>
       <Route exact path="/"
-        render={(props) => <Home {...props} currentUser={this.state.currentUser} />}
+        render={(props) => <Root {...props} currentUser={this.state.currentUser} />}
       />
       <Route exact path="/login" component={Login} />
-      <Route exact path="/profile/:uportAddress(0x[0-9a-fA-f]{40})"
-        render={(props) => <Profile {...props} />}
+      <Route exact path="/home"
+        render={(props) => <Home {...props} currentUser={this.state.currentUser} />}
       />
       <Route exact path="/confirm"
         render={(props) => <Confirm {...props} currentUser={this.state.currentUser} />}
@@ -71,9 +71,6 @@ export default class App extends React.Component {
       <Route component={this.RouteNotFound} />
     </Switch>
   }
-  // {/* <Route exact path="/claim" */}
-  // {/* render={(props) => <ClaimSkill {...props} currentUser={this.state.currentUser} />} */}
-  // {/* /> */}
 
   RouteNotFound = ({ location }) => (
     <div>
