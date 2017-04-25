@@ -18,7 +18,7 @@ export default class Profile extends React.Component {
 
   componentDidMount() {
     if (!this.state.uportAddress) {
-      this.addError(`Can't load user "null"`)
+      this.addError(`Can't load user "${this.state.uportAddress}"`)
       return
     }
     const serverUrl = `${process.env.REACT_APP_API_SERVER}/users/${this.state.uportAddress}`
@@ -74,6 +74,12 @@ export default class Profile extends React.Component {
     )
   }
 
+  avatar = () => {
+    if (this.state.avatar_image_ipfs_key) {
+      return <img src={'//ipfs.io/ipfs/' + this.state.avatar_image_ipfs_key} />
+    }
+  }
+
   rows = () => {
     return this.state.skills.map((skill, index) => {
       return <tr key={index}>
@@ -83,11 +89,5 @@ export default class Profile extends React.Component {
         <td>{skill.projectCount}</td>
       </tr>
     })
-  }
-
-  avatar = () => {
-    if (this.state.avatar_image_ipfs_key) {
-      return <img src={'//ipfs.io/ipfs/' + this.state.avatar_image_ipfs_key} />
-    }
   }
 }

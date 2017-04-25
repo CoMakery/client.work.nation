@@ -1,8 +1,10 @@
 import { d } from 'lightsaber/lib/log'
 import isBlank from 'is-blank'
 
+// Note that attempting to impersonate another uPort address
+// will result in invalid reputons, which are ignored
 export default class Authentication {
-  SESSION_KEY = 'worknation_current_user_uport_address'  // Note that attempting to impersonate another uPort address will result in invalid reputons, which are ignored
+  SESSION_KEY = 'worknation_current_user_uport_address'
 
 // should only be called once, at app start, to initiate state
   static getCurrentUser() {
