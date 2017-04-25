@@ -1,5 +1,125 @@
 $bright: yellow;
 
+body {
+  background-color: #000000;
+  background-image: url('/static/images/background-2560w.jpg');
+  background-position: center top;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
 h1 {
   color: $bright;
+}
+
+.page-wrapper {
+    margin-top: 25px;
+}
+
+.menu {
+
+}
+
+.project-name {
+  font-size: 26px;
+  font-weight: bold;
+  padding: 0 0 0 20px;
+  margin: 0 0 20px 0;
+}
+
+.confirm-container {
+}
+
+.confirm-header {
+  padding: 5px 20px;
+  background-color: rgba(0,205,204,0.7);
+  h2 {
+    font-size: 20px;
+    color: #ffffff;
+    margin: 0;
+  }
+}
+
+.confirm-body {
+  background-color: #e0e0e0;
+  font-size: 12px;
+  padding-right: 10px;
+}
+
+.confirm-body-subheader {
+  margin-right: 22px;
+  padding: 10px 15px 5px 20px;
+}
+
+.confirm-body-scroll {
+  max-height: 380px;
+  background-color: #e0e0e0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin: 0 0 0 10px;
+  padding-right: 10px;
+}
+
+.confirm-body-scroll::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #e0e0e0;
+}
+
+.confirm-body-scroll::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #e0e0e0;
+}
+
+.confirm-body-scroll::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 1px rgba(0,0,0,1);
+	background-color: #ffffff;
+}
+
+.confirm-body-row-wrapper {
+  padding-right: 15px;
+}
+
+.confirm-body-row {
+  background-color: #ffffff;
+  padding: 10px 0 7px 10px;
+  margin-bottom: 10px;
+  color: #95989a;
+}
+
+.cell-end-row {
+  padding: 0
+}
+
+.confirm-footer {
+  height: 100px;
+  background-color: #e0e0e0;
+  padding: 20px 32px 0 0;
+  text-align: right;
+}
+
+.footer-note {
+  padding-right: 20px;
+  font-size: 12px;
+  font-style: italic;
+}
+
+.button {
+  background-color: rgba(0,205,204,1);
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.button:hover {
+  background-color: rgba(0,205,204,1);
+  color: $bright;
+}
+
+.icon-confirm {
+  max-width: 25px;
 }
