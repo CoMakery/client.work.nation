@@ -1,7 +1,7 @@
 import isBlank from 'is-blank'
 import isPresent from 'is-present'
 import {clone} from 'lodash'
-import axios from 'axios'
+import http from 'axios'
 import {d} from 'lightsaber/lib/log'
 import React from 'react'
 
@@ -19,7 +19,7 @@ export default class Confirm extends React.Component {
 
   componentDidMount() {
     const serverUrl = `${process.env.REACT_APP_API_SERVER}/users`  // TODO: server `/projects` endpoint
-    axios.get(serverUrl).then(response => {
+    http.get(serverUrl).then(response => {
       if (isPresent(response.data)) {
         this.setState({users: response.data}) //, () => d(this.state))
       } else {
