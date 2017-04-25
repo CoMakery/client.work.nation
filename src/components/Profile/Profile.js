@@ -1,6 +1,6 @@
 import isPresent from 'is-present'
 import {clone, omit} from 'lodash'
-import axios from 'axios'
+import http from 'axios'
 import {d} from 'lightsaber/lib/log'
 import React from 'react'
 
@@ -18,7 +18,7 @@ export default class Profile extends React.Component {
 
   componentDidMount() {
     const serverUrl = `${process.env.REACT_APP_API_SERVER}/users/${this.state.uportAddress}`
-    axios.get(serverUrl).then(response => {
+    http.get(serverUrl).then(response => {
       if (isPresent(response.data)) {
         d(response.data)
         const newData = omit(response.data, 'uportAddress')
