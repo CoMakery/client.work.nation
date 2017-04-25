@@ -23,11 +23,15 @@ export default class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <div>
-          <h1>Work.nation</h1>
-          {this.menu()}
-          <hr />
-          {this.routes()}
+        <div className="page-wrapper">
+          <div className="row">
+            <div className="small-8 columns">
+              <h1 className="project-name">work.nation</h1>
+              {this.routes()}
+            </div>
+            <div className="small-3 columns" />
+            <div className="small-1 columns">{this.menu()}</div>
+          </div>
         </div>
       </BrowserRouter>
     )
@@ -37,7 +41,7 @@ export default class App extends React.Component {
     if (this.state.currentUser) {   // need to store this in state to get it to render properly
       return <ul className="menu vertical">
         <li><Link to="/home">[Avatar Image]</Link></li>
-        <li><Link to="/confirm"><img src="/static/images/icon_confirm.png" /></Link></li>
+        <li><Link to="/confirm"><img src="/static/images/icon_confirmed.svg" /></Link></li>
         <li><Link to="/search"><img src="/static/images/icon_Search.png" /></Link></li>
         <li><Link to="/project"><img src="/static/images/icon_ProjSetup.png" /></Link></li>
         <li><Link to="/logout">[Logout Icon]</Link></li>
@@ -80,4 +84,3 @@ export default class App extends React.Component {
     </div>
   )
 }
-

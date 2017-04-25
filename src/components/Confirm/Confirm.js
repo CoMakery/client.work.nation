@@ -54,20 +54,28 @@ export default class Confirm extends React.Component {
 
     // If no errors:
     return (
-      <div>
-        <h2>Confirmation Feed</h2>
-        <table>
-          <tbody>
-            <tr>
-              <td>Date</td>
-              <td>Project Name</td>
-              <td>Team Member</td>
-              <td>Skill</td>
-              <td>Confirm</td>
-            </tr>
+      <div className="confirm-container">
+        <div className="confirm-header">
+          <h2 className="">Confirmation Feed</h2>
+        </div>
+        <div className="confirm-body">
+          <div className="confirm-body-subheader">
+            <div className="row">
+              <div className="small-2 columns">Date</div>
+              <div className="small-3 columns">Project Name</div>
+              <div className="small-3 columns">Team Member</div>
+              <div className="small-3 columns">Skill</div>
+              <div className="small-1 columns">Confirm</div>
+            </div>
+          </div>
+          <div className="confirm-body-scroll">
             { this.rows() }
-          </tbody>
-        </table>
+          </div>
+        </div>
+        <div className="confirm-footer">
+          <span className="footer-note">to edit multiple, select all you want to confirm</span>
+          <input type="button" className="button" value="save" />
+        </div>
       </div>
     )
   }
@@ -76,24 +84,33 @@ export default class Confirm extends React.Component {
     if (isBlank(this.state.users)) return
     return this.state.users.map((user) => {
       return user.skills.map((skill) => {
-        return <tr>
-          <td>17 April 2017</td>
-          <td>Project Neptune</td>
-          <td>[avatar] {user.name || '[Name unknown]'}</td>
-          <td>{skill.name}</td>
-          {this.confirmationColumns(skill)}
-        </tr>
+        return <div className="confirm-body-row-wrapper">
+          <div className="row confirm-body-row">
+            <div className="small-2 columns">17 April 2017</div>
+            <div className="small-3 columns">Project Neptune</div>
+            <div className="small-3 columns">[avatar] {user.name || '[Name unknown]'}</div>
+            <div className="small-3 columns">{skill.name}</div>
+            {this.confirmationColumns(skill)}
+          </div>
+        </div>
+        // return <tr>
+        //   <td>17 April 2017</td>
+        //   <td>Project Neptune</td>
+        //   <td>[avatar] {user.name || '[Name unknown]'}</td>
+        //   <td>{skill.name}</td>
+        //   {this.confirmationColumns(skill)}
+        // </tr>
       })
     })
   }
 
   confirmationColumns = (skill) => {
     if (this.props.currentUser) {
-      return <td key={skill.ipfsReputonKey + '-confirm'}>
+      return <div key={skill.ipfsReputonKey + '-confirm'} className="small-1 columns text-center cell-end-row">
         <span onClick={this.handleConfirm} data-skill={skill.ipfsReputonKey}>
-          <img src="/static/images/icon_confirm.png" />
+          <img className="icon-confirm" src="/static/images/icon_confirmed.svg" />
         </span>
-      </td>
+      </div>
     }
   }
 

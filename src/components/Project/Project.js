@@ -1,10 +1,9 @@
 import React from 'react'
-import Nav from '../../util/nav'
 
 export default class Project extends React.Component {
   constructor(props) {
     super(props)
-    Nav.redirectUnlessLoggedIn(props.currentUser)
+    if (!props.currentUser) props.history.push('/login')
 
     this.state = {
       title: '',
