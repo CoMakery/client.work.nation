@@ -1,5 +1,7 @@
 # Work.nation Client
 
+[![Build Status](https://travis-ci.org/worknation/client.work.nation.svg?branch=master)](https://travis-ci.org/worknation/client.work.nation)
+
 <!-- ## Live demo -->
 
 <!-- https://demo.worknation.io -->
