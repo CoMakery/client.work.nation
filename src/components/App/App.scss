@@ -1,3 +1,5 @@
+/* Global element styling */
+
 $bright: yellow;
 
 body {
@@ -28,6 +30,57 @@ h1 {
   margin: 0 0 20px 0;
 }
 
+.button {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.button:hover {
+  color: $bright;
+}
+
+.button-cyan {
+  background-color: rgba(0,205,204,1);
+}
+
+.button-cyan:hover {
+  background-color: rgba(0,205,204,1);
+}
+
+.button-cyan:focus {
+  background-color: rgba(0,205,204,1);
+}
+
+.button-lt-blue {
+  background-color: rgba(0,157,255,1);
+}
+
+.button-lt-blue:hover {
+  background-color: rgba(0,157,255,1);
+}
+
+.button-lt-blue:focus {
+  background-color: rgba(0,157,255,1);
+}
+
+.icon-confirm {
+  max-width: 25px;
+}
+
+#uport-qr {
+  position: fixed;
+  top: 88px !important;
+  left: 66%;
+  width: 300px !important;
+  height:350px !important;
+  z-index:100;
+  // background-color:rgba(0,0,0,0);
+  text-align:center;
+}
+
+/* Confirm page styling */
+
 .confirm-container {
 }
 
@@ -42,7 +95,7 @@ h1 {
 }
 
 .confirm-body {
-  background-color: #e0e0e0;
+  background-color: rgba(224,224,224,0.9);
   font-size: 12px;
   padding-right: 10px;
 }
@@ -54,7 +107,6 @@ h1 {
 
 .confirm-body-scroll {
   max-height: 380px;
-  background-color: #e0e0e0;
   overflow-y: scroll;
   overflow-x: hidden;
   margin: 0 0 0 10px;
@@ -65,13 +117,12 @@ h1 {
 {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 	border-radius: 10px;
-	background-color: #e0e0e0;
+	background-color: rgba(224,224,224,0.9);
 }
 
 .confirm-body-scroll::-webkit-scrollbar
 {
 	width: 12px;
-	background-color: #e0e0e0;
 }
 
 .confirm-body-scroll::-webkit-scrollbar-thumb
@@ -97,9 +148,8 @@ h1 {
 }
 
 .confirm-footer {
-  height: 100px;
-  background-color: #e0e0e0;
-  padding: 20px 32px 0 0;
+  background-color: rgba(224,224,224,0.9);
+  padding: 30px 32px 30px 0;
   text-align: right;
 }
 
@@ -109,17 +159,44 @@ h1 {
   font-style: italic;
 }
 
-.button {
-  background-color: rgba(0,205,204,1);
-  font-size: 20px;
-  font-weight: bold;
+/* Add Project page styling */
+
+.project-container {
 }
 
-.button:hover {
-  background-color: rgba(0,205,204,1);
-  color: $bright;
+.project-header {
+  padding: 5px 20px;
+  background-color: rgba(0,157,255,0.7);
+  h2 {
+    font-size: 20px;
+    color: #ffffff;
+    margin: 0;
+  }
 }
 
-.icon-confirm {
-  max-width: 25px;
+.project-body {
+  background-color: rgba(224,224,224,0.9);
+  font-size: 12px;
+  padding: 50px 30px 0 30px;
+}
+
+.project-body span {
+  font-size: 16px;
+}
+
+.project-body input {
+  border: 1px solid #95989a;
+}
+
+.project-body .project-image {
+  border-top: 1px solid #95989a;
+  border-left: 1px solid #95989a;
+  border-right: 1px solid #95989a;
+  margin-top: 28px;
+}
+
+.project-footer {
+  background-color: rgba(224,224,224,0.9);
+  padding: 30px 30px 30px 0;
+  text-align: right;
 }

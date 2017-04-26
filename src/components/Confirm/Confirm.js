@@ -74,7 +74,7 @@ export default class Confirm extends React.Component {
         </div>
         <div className="confirm-footer">
           <span className="footer-note">to edit multiple, select all you want to confirm</span>
-          <input type="button" className="button" value="save" />
+          <input type="button" className="button button-cyan" value="save" />
         </div>
       </div>
     )
@@ -93,13 +93,6 @@ export default class Confirm extends React.Component {
             {this.confirmationColumns(skill)}
           </div>
         </div>
-        // return <tr>
-        //   <td>17 April 2017</td>
-        //   <td>Project Neptune</td>
-        //   <td>[avatar] {user.name || '[Name unknown]'}</td>
-        //   <td>{skill.name}</td>
-        //   {this.confirmationColumns(skill)}
-        // </tr>
       })
     })
   }
