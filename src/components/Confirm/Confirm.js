@@ -46,6 +46,8 @@ export default class Confirm extends React.Component {
   }
 
   render() {
+    if (!Auth.getCurrentUser()) return null
+
     if (isPresent(this.state.errors)) {
       return <div>{
         this.state.errors.map(([message, detail], key) => {

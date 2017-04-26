@@ -27,8 +27,7 @@ export default class UportUser {
       // notifications: true
     )
     .then((credentials) => {
-      const uportAddress = credentials.address
-      Auth.setCurrentUser(uportAddress)
+      Auth.setCurrentUser(credentials)
       return credentials
     }).catch(console.error)
   }

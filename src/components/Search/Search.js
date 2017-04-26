@@ -10,6 +10,8 @@ export default class Search extends React.Component {
   }
 
   render() {
+    if (!Auth.getCurrentUser()) return null
+
     return null
   }
 

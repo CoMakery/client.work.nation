@@ -27,6 +27,8 @@ export default class Project extends React.Component {
   }
 
   render() {
+    if (!Auth.getCurrentUser()) return null
+
     return (
       <div className="project-container">
         <div className="project-header">
