@@ -2,6 +2,7 @@ import {d} from 'lightsaber/lib/log'
 import React from 'react'
 
 import UportUser from '../../models/UportUser'
+import Auth from '../../models/Authentication'
 
 export default class ClaimSkill extends React.Component {
   constructor(props) {
@@ -23,6 +24,8 @@ export default class ClaimSkill extends React.Component {
   }
 
   render() {
+    if (!Auth.getCurrentUser()) return null
+
     return (
       <div>
         <form onSubmit={this.handleSubmit}>

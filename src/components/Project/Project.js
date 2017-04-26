@@ -27,6 +27,8 @@ export default class Project extends React.Component {
   }
 
   render() {
+    if (!Auth.getCurrentUser()) return null
+
     return <div>
       <h2>Project Setup</h2>
       <label>

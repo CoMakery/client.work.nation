@@ -10,14 +10,21 @@ import './App.scss'
 export default class App extends React.Component {
   constructor(props) {
     super(props)
+
+    Auth.setCurrentUserHandler(this.setCurrentUser)
+    Auth.getCurrentUserHandler(this.getCurrentUser)
+
     this.state = {
       currentUser: Auth.getCurrentUser()
     }
-    Auth.setCurrentUserHandler(this.setCurrentUser)
   }
 
   setCurrentUser = (currentUser) => {
     this.setState({currentUser}) //, () => d(this.state))
+  }
+
+  getCurrentUser = () => {
+    return this.state && this.state.currentUser
   }
 
   render() {

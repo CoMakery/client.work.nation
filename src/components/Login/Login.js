@@ -22,7 +22,7 @@ export default class Login extends React.Component {
 
   demoLogin = (event) => {
     const uportAddress = event.target.dataset.uport
-    Auth.setCurrentUser(uportAddress)
+    Auth.setCurrentUser({uportAddress})
     this.props.history.push('/home')
   }
 
