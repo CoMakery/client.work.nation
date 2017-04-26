@@ -101,15 +101,23 @@ export default class Profile extends React.Component {
   }
 
   confirmations = (skill) => {
-    return this.state.skills.map((skill, index) => {
-      return <tr key={index}>
+    return [
+      <tr>
         <td />
         <td>
-          {skill.confirmationCount} confirmations from Project Neptune:
-          {skill.confirmations.map(conf => conf.confirmerName).join(', ')}
+          {skill.confirmationCount} confirmations from
+          Project Neptune: {skill.confirmations.map(conf => conf.confirmerName).join(', ')}
         </td>
         <td />
-      </tr>
-    })
+      </tr>,
+      <tr>
+        <td />
+        <td>
+          {skill.confirmationCount} confirmations from
+          Project Jupiter: {skill.confirmations.map(conf => conf.confirmerName).join(', ')}
+        </td>
+        <td />
+      </tr>,
+    ]
   }
 }
