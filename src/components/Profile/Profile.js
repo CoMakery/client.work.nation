@@ -54,22 +54,29 @@ export default class Profile extends React.Component {
     }
 
     // If no errors:
+    d({state: this.state})
     return (
       <div>
         {this.avatar()}
-        <h3><a href={'https://ropsten.io/address/' + this.state.uportAddress}>{this.state.name}</a></h3>
+        <h2>{this.state.name}</h2>
+        <div><a href={'#'}>view retupton data</a></div>
+        <div><a href={'https://ropsten.io/address/' + this.state.uportAddress} target="_blank">view uPort Ethereum contract</a></div>
         <h3>Skills</h3>
         <table>
           <tbody>
             <tr>
               <th>confirmations</th>
               <th />
-              <th />
               <th># of projects</th>
             </tr>
-            { this.rows() }
+            { this.skills() }
           </tbody>
         </table>
+
+        <h3>Projects</h3>
+        <div>Manic Mondays</div>
+        <div>Project Tuesday</div>
+        <div>Lorem Ipsum</div>
       </div>
     )
   }
@@ -80,13 +87,28 @@ export default class Profile extends React.Component {
     }
   }
 
-  rows = () => {
+  skills = () => {
+    return this.state.skills.map((skill, index) => {
+      return [
+        <tr key={index}>
+          <td>{skill.confirmationCount}</td>
+          <td><b>{skill.name}</b></td>
+          <td>{skill.projectCount}</td>
+        </tr>,
+        this.confirmations(skill)
+      ]
+    })
+  }
+
+  confirmations = (skill) => {
     return this.state.skills.map((skill, index) => {
       return <tr key={index}>
-        <td>{skill.confirmationCount}</td>
-        <td>{skill.name}</td>
         <td />
-        <td>{skill.projectCount}</td>
+        <td>
+          {skill.confirmationCount} confirmations from Project Neptune:
+          {skill.confirmations.map(conf => conf.confirmerName).join(', ')}
+        </td>
+        <td />
       </tr>
     })
   }
