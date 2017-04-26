@@ -13,6 +13,7 @@
     "dev": "yarn start",
     "lint": "yarn lint:ci -- --fix",
     "lint:ci": "eslint --ignore-pattern '!.eslintrc.js' .eslintrc.js src",
+    "postinstall": "npm rebuild node-sass",
     "pre-push": "yarn lint && yarn check-clean && yarn check-yarn && yarn build",
     "shipit": "yarn pre-push && git push --tags origin head",
     "start": "node scripts/start.js",
