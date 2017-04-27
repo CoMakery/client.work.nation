@@ -89,6 +89,7 @@ export default class UportUser {
       const profile = merge(cloneDeep(params), {
         type: 'project',
         permanodeId: `/ipfs/${permanodeKey}`,
+        timestamp: moment().toISOString(),
       })
       return this.saveJsonToIpfs(profile)
     }).then((projectKey) => {
