@@ -14,7 +14,7 @@ export default class ClaimSkill extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    UportUser.claimSkill(this.props.currentUser, this.state.skill)
+    UportUser.claimSkill(this.state.skill)
   }
 
   updateOptions = (event) => {

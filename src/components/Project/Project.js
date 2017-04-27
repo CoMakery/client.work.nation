@@ -1,13 +1,15 @@
 import React from 'react'
+import { omit } from 'lodash'
 
 import Auth from '../../models/Authentication'
+import UportUser from '../../models/UportUser'
 
 export default class Project extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      title: '',
+      name: '',
       address: '',
       contact: '',
       skills: '',
@@ -26,6 +28,10 @@ export default class Project extends React.Component {
     this.setState(newState)
   }
 
+  handleSubmit = () => {
+    UportUser.createProject(omit(this.state, 'placeholderImageUrl'))
+  }
+
   render() {
     if (!Auth.getCurrentUser()) return null
 
@@ -39,19 +45,19 @@ export default class Project extends React.Component {
             <div className="small-8 columns">
               <label>
                 <span>Project Title</span>
-                <input type="text" id="title" value={this.state.title} onChange={this.updateOptions} />
+                <input type="text" id="name" value={this.state.name} onChange={this.updateOptions} />
               </label>
               <label>
                 <span>Connect Your Project</span>
-                <input type="text" id="title" value={this.state.address} onChange={this.updateOptions} placeholder="project URL / ethereum contract address" />
+                <input type="text" id="address" value={this.state.address} onChange={this.updateOptions} placeholder="project URL / ethereum contract address" />
               </label>
               <label>
                 <span>Project Contact</span>
-                <input type="text" id="title" value={this.state.contact} onChange={this.updateOptions} placeholder="email address for prototype. (2.0: uPort address only (project owner))" />
+                <input type="text" id="contact" value={this.state.contact} onChange={this.updateOptions} placeholder="email address for prototype. (2.0: uPort address only (project owner))" />
               </label>
               <label>
                 <span>Skill Sets</span>
-                <input type="text" id="title" value={this.state.skills} onChange={this.updateOptions} placeholder="separate by comma" />
+                <input type="text" id="skills" value={this.state.skills} onChange={this.updateOptions} placeholder="separate by comma" />
               </label>
             </div>
             <div className="small-4 columns">
@@ -65,7 +71,7 @@ export default class Project extends React.Component {
           </div>
         </div>
         <div className="project-footer">
-          <input type="submit" value="add project" className="button button-lt-blue" />
+          <input type="submit" onClick={this.handleSubmit} value="add project" className="button button-lt-blue" />
         </div>
       </div>
     )

@@ -1,8 +1,8 @@
 import { d } from 'lightsaber/lib/log'
 import React from 'react'
 
-import UportUser from '../../models/UportUser'
 import Auth from '../../models/Authentication'
+import UportUser from '../../models/UportUser'
 
 export default class Login extends React.Component {
   componentDidMount() {

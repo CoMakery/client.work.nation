@@ -42,7 +42,7 @@ export default class Confirm extends React.Component {
   }
 
   handleConfirm = (event) => {
-    UportUser.confirmSkill(this.props.currentUser, event.target.dataset.skill)
+    UportUser.confirmSkill(event.target.dataset.skill)
   }
 
   render() {
