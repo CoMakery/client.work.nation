@@ -3,7 +3,7 @@ import React from 'react'
 import {BrowserRouter, Link, Route, Switch} from 'react-router-dom'
 
 import Auth from '../../models/Authentication'
-import {Confirm, Home, Login, Logout, Project, Root, Search} from '..'
+import {Confirm, Home, Login, Logout, Project, ProjectAddPeople, Root} from '..'
 import '../../../node_modules/foundation-sites/dist/css/foundation-flex.css'  // Foundation with FlexGrid: http://foundation.zurb.com/sites/docs/flex-grid.html
 import './App.scss'
 
@@ -73,10 +73,13 @@ export default class App extends React.Component {
         render={(props) => <Confirm {...props} currentUser={this.state.currentUser} />}
       />
       <Route exact path="/search"
-        render={(props) => <Search {...props} currentUser={this.state.currentUser} />}
+        render={null}
       />
       <Route exact path="/project"
         render={(props) => <Project {...props} currentUser={this.state.currentUser} />}
+      />
+      <Route exact path="/project_setup/:projectId(Qm[0-9a-zA-Z]{40,})"
+        render={(props) => <ProjectAddPeople {...props} currentUser={this.state.currentUser} />}
       />
       <Route exact path="/logout" component={Logout} />
       <Route component={this.RouteNotFound} />

@@ -54,7 +54,7 @@ export default class Profile extends React.Component {
     }
 
     // If no errors:
-    d({state: this.state})
+    // d({state: this.state})
     return (
       <div>
         {this.avatar()}
