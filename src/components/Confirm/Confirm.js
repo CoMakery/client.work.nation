@@ -29,21 +29,21 @@ export default class Confirm extends React.Component {
       if (isPresent(response.data)) {
         this.setState({users: response.data}) //, () => d(this.state))
       } else {
-        // this.addError(`No data found for user ${this.state.uportAddress}`, `Server URL: ${serverUrl}`)
+        this.addError(`No data found for user ${this.state.uportAddress}`, `Server URL: ${serverUrl}`)
       }
     }).catch(err => {
       this.addError(`Could not reach server`, `Url: ${serverUrl}`, err.toString())
     })
   }
 
-  addError(message, details) {
+  addError(message, ...details) {
     let errors = clone(this.state.errors)
-    errors.push([message, details])
+    errors.push([message, ...details])
     this.setState({errors}) //, () => d({state: this.state}))
   }
 
   handleConfirm = (event) => {
-    UportUser.confirmSkill(this.props.currentUser, event.target.dataset.skill)
+    UportUser.confirmSkill(event.target.dataset.skill)
   }
 
   render() {
@@ -51,10 +51,10 @@ export default class Confirm extends React.Component {
 
     if (isPresent(this.state.errors)) {
       return <div>{
-        this.state.errors.map(([message, detail], key) => {
-          return <div className="callout alert" key={key} >
+        this.state.errors.map(([message, ...details], key) => {
+          return <div className="callout alert" key={key}>
             <h5>{message}</h5>
-            <p>{detail}</p>
+            {details.map(detail => <p>{detail}</p>)}
           </div>
         })
       }</div>
@@ -100,7 +100,7 @@ export default class Confirm extends React.Component {
   rows = () => {
     if (isBlank(this.state.users)) return
     return this.state.users.map((user) => {
-      return user.skills.map((skill) => {
+      return user.skill_claims.map((skill) => {
         return <div className="confirm-body-row-wrapper">
           <div className="row confirm-body-row">
             <div className="small-2 columns">17 April 2017</div>

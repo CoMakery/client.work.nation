@@ -1,6 +1,9 @@
+import { d } from 'lightsaber/lib/log'
 import React from 'react'
+import { omit } from 'lodash'
 
 import Auth from '../../models/Authentication'
+import UportUser from '../../models/UportUser'
 import {ClaimSkill} from '..'
 
 export default class Project extends React.Component {
@@ -28,8 +31,12 @@ export default class Project extends React.Component {
   }
 
   handleSubmit = () => {
-    // UportUser.createProject(omit(this.state, 'placeholderImageUrl'))
-    this.props.history.push('/project_setup/QmagDwhvQdi8G3onRcrVSPFtYQDiQyCK33xDNLtmEUM1Mw')
+    if (process.env.REACT_APP_FAKE_LOGIN) {
+      this.props.history.push('/project_setup/QmagDwhvQdi8G3onRcrVSPFtYQDiQyCK33xDNLtmEUM1Mw')
+    } else {
+      UportUser.createProject(omit(this.state, 'placeholderImageUrl'))
+      .then((projectId) => this.props.history.push(`/project_setup/${projectId}`))
+    }
   }
 
   render() {

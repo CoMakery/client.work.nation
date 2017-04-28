@@ -35,19 +35,19 @@ export default class Profile extends React.Component {
     })
   }
 
-  addError(message, details) {
+  addError(message, ...details) {
     let errors = clone(this.state.errors)
-    errors.push([message, details])
-    this.setState({errors}) // , () => d({state: this.state}))
+    errors.push([message, ...details])
+    this.setState({errors}) //, () => d({state: this.state}))
   }
 
   render() {
     if (isPresent(this.state.errors)) {
       return <div>{
-        this.state.errors.map(([message, detail], key) => {
+        this.state.errors.map(([message, ...details], key) => {
           return <div className="callout alert" key={key} >
             <h5>{message}</h5>
-            <p>{detail}</p>
+            {details.map(detail => <p>{detail}</p>)}
           </div>
         })
       }</div>
