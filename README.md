@@ -12,9 +12,13 @@
 yarn && yarn dev
 ```
 
-If you want to run a server, see also _Work.nation Server_.
+The dev server is quite particular about whitespace and other linting issues.
+To fix trivial issues, just run `yarn lint`.
+
+<!-- If you want to run a server, see also _Work.nation Server_. -->
 
 ## Dev Notes: React routing
 
 - React Router examples: https://reacttraining.com/react-router/web/example/basic
-- Retular expression in paths: https://github.com/pillarjs/path-to-regexp#usage
+- Regular expression in paths: https://github.com/pillarjs/path-to-regexp#usage
+- Layouts: https://simonsmith.io/reusing-layouts-in-react-router-4/
