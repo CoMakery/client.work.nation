@@ -31,13 +31,13 @@ export default class App extends React.Component {
     return (
       <BrowserRouter>
         <div className="page-wrapper">
-          <div className="row">
-            <div className="small-8 columns">
-              <h1 className="project-name">work.nation</h1>
-              {this.routes()}
+          <div className="float-right menu-outside">
+            <div className="menu-inside">
+              {this.menu()}
             </div>
-            <div className="small-3 columns" />
-            <div className="small-1 columns">{this.menu()}</div>
+          </div>
+          <div className="">
+            {this.routes()}
           </div>
         </div>
       </BrowserRouter>
@@ -46,12 +46,12 @@ export default class App extends React.Component {
 
   menu = () => {
     if (this.state.currentUser) {   // need to store this in state to get it to render properly
-      return <ul className="menu vertical">
-        <li><Link to="/home">[Avatar Image]</Link></li>
+      return <ul className="menu-items">
+        <li><Link to="/home"><img src="/static/images/profile-photo.png" /></Link></li>
         <li><Link to="/confirm"><img src="/static/images/icon_confirmed.svg" /></Link></li>
-        <li><Link to="/search"><img src="/static/images/icon_Search.png" /></Link></li>
-        <li><Link to="/project"><img src="/static/images/icon_ProjSetup.png" /></Link></li>
-        <li><Link to="/logout">[Logout Icon]</Link></li>
+        <li><Link to="/search"><img src="/static/images/icon_search.svg" /></Link></li>
+        <li><Link to="/project"><img src="/static/images/icon_rocket.svg" /></Link></li>
+        <li><Link to="/logout"><span className="tiny">[Logout]</span></Link></li>
       </ul>
     } else {
       return <ul>
