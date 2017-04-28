@@ -4,7 +4,6 @@ import { omit } from 'lodash'
 
 import Auth from '../../models/Authentication'
 import UportUser from '../../models/UportUser'
-import {ClaimSkill} from '..'
 
 export default class Project extends React.Component {
   constructor(props) {
@@ -47,7 +46,6 @@ export default class Project extends React.Component {
         <div className="small-8 columns">
           <div className="claim-skill-container">
             <h1 className="project-name">work.nation</h1>
-            <ClaimSkill {...this.props} />
           </div>
           <div className="project-container">
             <div className="project-header">
