@@ -7,6 +7,7 @@ import React from 'react'
 
 import UportUser from '../../models/UportUser'
 import Auth from '../../models/Authentication'
+import {ClaimSkill} from '..'
 
 export default class Confirm extends React.Component {
 
@@ -61,28 +62,37 @@ export default class Confirm extends React.Component {
 
     // If no errors:
     return (
-      <div className="confirm-container">
-        <div className="confirm-header">
-          <h2 className="">Confirmation Feed</h2>
-        </div>
-        <div className="confirm-body">
-          <div className="confirm-body-subheader">
-            <div className="row">
-              <div className="small-2 columns">Date</div>
-              <div className="small-3 columns">Project Name</div>
-              <div className="small-3 columns">Team Member</div>
-              <div className="small-3 columns">Skill</div>
-              <div className="small-1 columns">Confirm</div>
+      <div className="row">
+        <div className="small-8 columns">
+          <div className="claim-skill-container">
+            <h1 className="project-name">work.nation</h1>
+            <ClaimSkill {...this.props} />
+          </div>
+          <div className="confirm-container">
+            <div className="confirm-header">
+              <h2 className="">Confirmation Feed</h2>
+            </div>
+            <div className="confirm-body">
+              <div className="confirm-body-subheader">
+                <div className="row">
+                  <div className="small-2 columns">Date</div>
+                  <div className="small-3 columns">Project Name</div>
+                  <div className="small-3 columns">Team Member</div>
+                  <div className="small-3 columns">Skill</div>
+                  <div className="small-1 columns">Confirm</div>
+                </div>
+              </div>
+              <div className="confirm-body-list">
+                { this.rows() }
+              </div>
+            </div>
+            <div className="confirm-footer">
+              <span className="footer-note">to edit multiple, select all you want to confirm</span>
+              <input type="button" className="button button-cyan" value="save" />
             </div>
           </div>
-          <div className="confirm-body-scroll">
-            { this.rows() }
-          </div>
         </div>
-        <div className="confirm-footer">
-          <span className="footer-note">to edit multiple, select all you want to confirm</span>
-          <input type="button" className="button button-cyan" value="save" />
-        </div>
+        <div className="small-4 columns" />
       </div>
     )
   }

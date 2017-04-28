@@ -56,27 +56,40 @@ export default class Profile extends React.Component {
     // If no errors:
     // d({state: this.state})
     return (
-      <div>
-        {this.avatar()}
-        <h2>{this.state.name}</h2>
-        <div><a href={'#'}>view retupton data</a></div>
-        <div><a href={'https://ropsten.io/address/' + this.state.uportAddress} target="_blank">view uPort Ethereum contract</a></div>
-        <h3>Skills</h3>
-        <table>
-          <tbody>
-            <tr>
-              <th>confirmations</th>
-              <th />
-              <th># of projects</th>
-            </tr>
-            { this.skills() }
-          </tbody>
-        </table>
-
-        <h3>Projects</h3>
-        <div>Manic Mondays</div>
-        <div>Project Tuesday</div>
-        <div>Lorem Ipsum</div>
+      <div className="profile-container">
+        <div className="profile-header">
+          { this.avatar() }
+          <h2 className="">{this.state.name}</h2>
+          <div className="small"><a href={'#'}>view retupton data</a></div>
+          <div className="small"><a href={'https://ropsten.io/address/' + this.state.uportAddress} target="_blank">view uPort Ethereum contract</a></div>
+        </div>
+        <div className="profile-body">
+          <div className="profile-body-list">
+            <h3>Skills</h3>
+            <div className="profile-body-list-subheader">
+              <div className="row">
+                <div className="small-2 columns small">
+                  confirmations
+                </div>
+                <div className="small-7 columns" />
+                <div className="small-3 columns small">
+                  # of projects
+                </div>
+              </div>
+            </div>
+            <div className="profile-body-list-scroll">
+              { this.skills() }
+            </div>
+          </div>
+          <div className="profile-body-list">
+            <h3>Projects</h3>
+            <div className="profile-body-list-scroll">
+              <div>Manic Mondays</div>
+              <div>Project Tuesday</div>
+              <div>Lorem Ipsum</div>
+            </div>
+          </div>
+        </div>
       </div>
     )
   }
@@ -90,34 +103,34 @@ export default class Profile extends React.Component {
   skills = () => {
     return this.state.skills.map((skill, index) => {
       return [
-        <tr key={index}>
-          <td>{skill.confirmationCount}</td>
-          <td><b>{skill.name}</b></td>
-          <td>{skill.projectCount}</td>
-        </tr>,
-        this.confirmations(skill)
+        <div key={index} className="row">
+          <div className="small-2 columns small confirmation-count">
+            {skill.confirmationCount}
+          </div>
+          <div className="small-8 columns">
+            {skill.name}<br />
+            {this.confirmations(skill)}
+          </div>
+          <div className="small-2 columns small project-count">
+            {skill.projectCount}
+          </div>
+        </div>
       ]
     })
   }
 
   confirmations = (skill) => {
     return [
-      <tr>
-        <td />
-        <td>
+      <div>
+        <p className="tiny">
           {skill.confirmationCount} confirmations from
           Project Neptune: {skill.confirmations.map(conf => conf.confirmerName).join(', ')}
-        </td>
-        <td />
-      </tr>,
-      <tr>
-        <td />
-        <td>
+        </p>
+        <p className="tiny">
           {skill.confirmationCount} confirmations from
           Project Jupiter: {skill.confirmations.map(conf => conf.confirmerName).join(', ')}
-        </td>
-        <td />
-      </tr>,
+        </p>
+      </div>
     ]
   }
 }

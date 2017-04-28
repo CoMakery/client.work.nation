@@ -13,10 +13,16 @@ export default class Home extends React.Component {
   render() {
     if (!Auth.getCurrentUser()) return null
 
-    return <div>
-      <ClaimSkill {...this.props} />
-      <Profile {...this.props} uportAddress={Auth.getUportAddress(this.props)} />
-    </div>
+    return (
+      <div>
+        <div className="float-right">
+          <Profile {...this.props} uportAddress={Auth.getUportAddress(this.props)} />
+        </div>
+        <div className="claim-skill-container">
+          <h1 className="project-name">work.nation</h1>
+          <ClaimSkill {...this.props} />
+        </div>
+      </div>
+    )
   }
 }
-
