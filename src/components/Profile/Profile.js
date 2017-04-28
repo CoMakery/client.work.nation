@@ -11,7 +11,7 @@ export default class Profile extends React.Component {
     this.state = {
       uportAddress: this.props.uportAddress,
       name: null,
-      skills: [],
+      skill_claims: [],
       errors: [],
     }
   }
@@ -101,7 +101,7 @@ export default class Profile extends React.Component {
   }
 
   skills = () => {
-    return this.state.skills.map((skill, index) => {
+    return this.state.skill_claims.map((skill, index) => {
       return [
         <div key={index} className="row">
           <div className="small-2 columns small confirmation-count">
@@ -121,7 +121,7 @@ export default class Profile extends React.Component {
 
   confirmations = (skill) => {
     return [
-      <div>
+      <div key="temporary-key">
         <p className="tiny">
           {skill.confirmationCount} confirmations from
           Project Neptune: {skill.confirmations.map(conf => conf.confirmerName).join(', ')}

@@ -41,8 +41,8 @@ export default class Login extends React.Component {
           Login as Harlan
         </div>
         <hr />
-        <div className="button" onClick={this.demoLogin} data-uport="0x01532a9d8c6f591be493d85f90966df90dc7a5ac">
-          Login as 0x01532a9d8c6f591be493d85f90966df90dc7a5ac
+        <div className="button" onClick={this.demoLogin} data-uport="0x698e6379ad4f2cd7fc3c2f4b6a20fb6903a925ee">
+          Login as 0x698e6379ad4f2cd7fc3c2f4b6a20fb6903a925ee
         </div>
       </div>
     } else {
