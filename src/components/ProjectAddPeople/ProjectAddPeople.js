@@ -2,7 +2,7 @@ import {d} from 'lightsaber/lib/log'
 import React from 'react'
 
 import Auth from '../../models/Authentication'
-import {Search, ClaimSkill} from '..'
+import {Search} from '..'
 
 export default class ProjectAddPeople extends React.Component {
   componentWillMount() {
@@ -22,7 +22,6 @@ export default class ProjectAddPeople extends React.Component {
         <div className="small-8 columns">
           <div className="claim-skill-container">
             <h1 className="project-name">work.nation</h1>
-            <ClaimSkill {...this.props} />
           </div>
           <div className="project-container">
             <div className="project-header">

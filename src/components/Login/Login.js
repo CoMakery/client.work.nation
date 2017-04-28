@@ -29,8 +29,8 @@ export default class Login extends React.Component {
   render() {
     if (process.env.REACT_APP_FAKE_LOGIN) {
       return <div>
-        <div className="button" onClick={this.demoLogin} data-uport="0x65c7eeec1884d7dc2773464d3feb4c42cf44b74b">
-          Login as 0x65c7eeec1884d7dc2773464d3feb4c42cf44b74b
+        <div className="button" onClick={this.demoLogin} data-uport="0xa778edb246f6def1c51e599c23e7c8f1d1493633">
+          Login as 0xa778edb246f6def1c51e599c23e7c8f1d1493633
         </div>
         <hr />
         <div className="button" onClick={this.demoLogin} data-uport="0xa778edb246f6def1c51e599c23e7c8f1d1493633">
