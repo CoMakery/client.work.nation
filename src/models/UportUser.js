@@ -66,8 +66,8 @@ export default class UportUser {
       'application': 'skills',
       'reputons': [
         {
-          'rater': currentUserUportAddress,
           'assertion': this.REPUTON_ASSERTION_CONFIRM,
+          'rater': currentUserUportAddress,
           'rated': skillIpfsKey,
           'rating': 0.5,
           'normal-rating': 0.5,

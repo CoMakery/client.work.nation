@@ -60,7 +60,7 @@ export default class Profile extends React.Component {
         <div className="profile-header">
           { this.avatar() }
           <h2 className="">{this.state.name}</h2>
-          <div className="small"><a href={'#'}>view retupton data</a></div>
+          <div className="small"><a href={'#'}>view reputon data</a></div>
           <div className="small"><a href={'https://ropsten.io/address/' + this.state.uportAddress} target="_blank">view uPort Ethereum contract</a></div>
         </div>
         <div className="profile-body">
