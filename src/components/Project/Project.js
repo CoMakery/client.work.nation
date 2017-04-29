@@ -33,8 +33,11 @@ export default class Project extends React.Component {
     if (process.env.REACT_APP_FAKE_LOGIN) {
       this.props.history.push('/project_setup/QmagDwhvQdi8G3onRcrVSPFtYQDiQyCK33xDNLtmEUM1Mw')
     } else {
-      UportUser.createProject(omit(this.state, 'placeholderImageUrl'))
-      .then((projectId) => this.props.history.push(`/project_setup/${projectId}`))
+      // TODO catch any errors and display
+      UportUser.createProject(omit(this.state, 'placeholderImageUrl')) // eslint-disable-line promise/catch-or-return
+      .then((projectId) => {
+        return this.props.history.push(`/project_setup/${projectId}`)
+      })
     }
   }
 
