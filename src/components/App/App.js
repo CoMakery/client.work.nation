@@ -1,6 +1,7 @@
 import {d} from 'lightsaber/lib/log'
 import React from 'react'
 import {BrowserRouter, Link, Route, Switch} from 'react-router-dom'
+import MetaTags from 'react-meta-tags'
 
 import Auth from '../../models/Authentication'
 import {Confirm, Home, Login, Logout, Project, ProjectAddPeople, Root} from '..'
@@ -29,18 +30,26 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <BrowserRouter>
-        <div className="page-wrapper">
-          <div className="float-right menu-outside">
-            <div className="menu-inside">
-              {this.menu()}
+      <div>
+        <MetaTags>
+          <title>work.nation</title>
+          <meta id="meta-description" name="description" content="work.nation" />
+          <meta id="og-title" property="og:title" content="Work.Nation" />
+          <link rel="shortcut icon" type="image/png" href="/static/images/favicon.png" />
+        </MetaTags>
+        <BrowserRouter>
+          <div className="page-wrapper">
+            <div className="float-right menu-outside">
+              <div className="menu-inside">
+                {this.menu()}
+              </div>
+            </div>
+            <div className="">
+              {this.routes()}
             </div>
           </div>
-          <div className="">
-            {this.routes()}
-          </div>
-        </div>
-      </BrowserRouter>
+        </BrowserRouter>
+      </div>
     )
   }
 
