@@ -32,9 +32,19 @@ export default class SkillAutosuggest extends React.Component {
 
   renderSuggestion = suggestion => (
     <div>
-      {suggestion.name}
+      <div>
+        {suggestion.name}
+      </div>
+      <div>
+        (DID: {this.abbreviateDid(suggestion.permanodeId)})
+      </div>
     </div>
   )
+
+  abbreviateDid = (did) => {
+    let meat = did.replace(/\/ipfs\//, '')
+    return `${meat.slice(0, 10)}...${meat.slice(meat.length - 10)}`
+  }
 
   getSuggestions = value => {
     const inputValue = value.trim().toLowerCase()
