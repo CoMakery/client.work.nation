@@ -5,8 +5,10 @@ import http from 'axios'
 import isPresent from 'is-present'
 
 export default class SkillAutosuggest extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
+
+    this.onValueUpdate = props.onValueUpdate
 
     this.state = {
       options: [],
@@ -28,7 +30,7 @@ export default class SkillAutosuggest extends React.Component {
     })
   }
 
-  getSuggestionValue = suggestion => suggestion.name
+  getSuggestionValue = suggestion => suggestion.permanodeId
 
   renderSuggestion = suggestion => (
     <div>
@@ -36,12 +38,12 @@ export default class SkillAutosuggest extends React.Component {
         {suggestion.name}
       </div>
       <div>
-        (DID: {this.abbreviateDid(suggestion.permanodeId)})
+        (DID: {this.didShort(suggestion.permanodeId)})
       </div>
     </div>
   )
 
-  abbreviateDid = (did) => {
+  didShort = (did) => {
     let meat = did.replace(/\/ipfs\//, '')
     return `${meat.slice(0, 10)}...${meat.slice(meat.length - 10)}`
   }
@@ -55,10 +57,9 @@ export default class SkillAutosuggest extends React.Component {
     )
   }
 
-  onChange = (event, { newValue }) => {
-    this.setState({
-      value: newValue
-    })
+  onChange = (event, {newValue}) => {
+    this.setState({value: newValue})
+    this.onValueUpdate(newValue)
   }
 
   onSuggestionsFetchRequested = ({ value }) => {

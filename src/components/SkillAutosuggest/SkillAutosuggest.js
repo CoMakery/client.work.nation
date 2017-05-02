@@ -5,8 +5,10 @@ import http from 'axios'
 import isPresent from 'is-present'
 
 export default class SkillAutosuggest extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
+
+    this.onValueUpdate = props.onValueUpdate
 
     this.state = {
       skills: [],
@@ -46,9 +48,8 @@ export default class SkillAutosuggest extends React.Component {
   }
 
   onChange = (event, { newValue }) => {
-    this.setState({
-      value: newValue
-    })
+    this.setState({value: newValue})
+    this.onValueUpdate(newValue)
   }
 
   onSuggestionsFetchRequested = ({ value }) => {

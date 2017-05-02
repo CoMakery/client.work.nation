@@ -8,13 +8,19 @@ export default class ClaimSkill extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      skill: null,
+      projectId: null,
     }
   }
 
   handleSubmit = (event) => {
     event.preventDefault()
-    UportUser.claimSkill(this.state.skill)
+    UportUser.claimSkill(this.state.skill, this.state.projectId)
   }
+
+  updateSkill = (skill) => this.setState({skill})
+
+  updateProjectId = (projectId) => this.setState({projectId})
 
   render() {
     return (
@@ -22,10 +28,10 @@ export default class ClaimSkill extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <div className="row">
             <div className="small-5 columns">
-              <SkillAutosuggest />
+              <SkillAutosuggest onValueUpdate={this.updateSkill} />
             </div>
             <div className="small-5 columns">
-              <ProjectAutosuggest />
+              <ProjectAutosuggest onValueUpdate={this.updateProjectId} />
             </div>
             <div className="small-2 columns">
               <input type="submit" value="add" className="button button-cyan button-thin button-fullwidth" />

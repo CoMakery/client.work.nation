@@ -35,14 +35,15 @@ export default class UportUser {
     }).catch(console.error)
   }
 
-  static claimSkill(skill) {
+  static claimSkill(skill, projectId) {
     const currentUserUportAddress = Auth.getUportAddress()
     let reputon = {
       'application': 'skills',
       'reputons': [
         {
-          'rater': currentUserUportAddress,
           'assertion': skill,
+          'project': projectId,
+          'rater': currentUserUportAddress,
           'rated': currentUserUportAddress,
           'rating': 1,  // maybe not in reputon
           'sample-size': 1,
