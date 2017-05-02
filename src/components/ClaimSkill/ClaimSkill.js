@@ -1,14 +1,13 @@
 import {d} from 'lightsaber/lib/log'
 import React from 'react'
 
+import {ProjectAutosuggest, SkillAutosuggest} from '..'
 import UportUser from '../../models/UportUser'
-import Auth from '../../models/Authentication'
 
 export default class ClaimSkill extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      skill: ''
     }
   }
 
@@ -17,28 +16,16 @@ export default class ClaimSkill extends React.Component {
     UportUser.claimSkill(this.state.skill)
   }
 
-  updateOptions = (event) => {
-    let newState = {}
-    newState[event.target.id] = event.target.value
-    this.setState(newState)
-  }
-
   render() {
-    if (!Auth.getCurrentUser()) return null
-
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
           <div className="row">
             <div className="small-5 columns">
-              <label>
-                <input type="text" id="skill" value={this.state.skill} onChange={this.updateOptions} placeholder="Skill" />
-              </label>
+              <SkillAutosuggest />
             </div>
             <div className="small-5 columns">
-              <label>
-                <input type="text" id="project" value={this.state.project} onChange={this.updateOptions} placeholder="Project" />
-              </label>
+              <ProjectAutosuggest />
             </div>
             <div className="small-2 columns">
               <input type="submit" value="add" className="button button-cyan button-thin button-fullwidth" />

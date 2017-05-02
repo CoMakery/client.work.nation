@@ -7,7 +7,6 @@ import React from 'react'
 
 import UportUser from '../../models/UportUser'
 import Auth from '../../models/Authentication'
-import {ClaimSkill} from '..'
 
 export default class Confirm extends React.Component {
 
@@ -35,7 +34,7 @@ export default class Confirm extends React.Component {
         }
         document.querySelector('.confirm-body-list').style.height = this.state.confirmDivHeight + 'px'
       } else {
-        this.addError(`No data found for user ${this.state.uportAddress}`, `Server URL: ${serverUrl}`)
+        this.addError(`No data found`, `Server URL: ${serverUrl}`)
       }
     }).catch(err => {
       this.addError(`Could not reach server`, `Url: ${serverUrl}`, err.toString())
@@ -72,7 +71,6 @@ export default class Confirm extends React.Component {
         <div className="small-8 columns">
           <div className="claim-skill-container">
             <h1 className="project-name">work.nation</h1>
-            <ClaimSkill {...this.props} />
           </div>
           <div className="confirm-container">
             <div className="confirm-header">
@@ -93,7 +91,7 @@ export default class Confirm extends React.Component {
               </div>
             </div>
             <div className="confirm-footer">
-              <span className="footer-note">to edit multiple, select all you want to confirm</span>
+              {/* <span className="footer-note">to edit multiple, select all you want to confirm</span> */}
               <input type="button" className="button button-cyan" value="save" />
             </div>
           </div>

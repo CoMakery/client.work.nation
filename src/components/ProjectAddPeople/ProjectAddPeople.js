@@ -2,7 +2,7 @@ import {d} from 'lightsaber/lib/log'
 import React from 'react'
 
 import Auth from '../../models/Authentication'
-import {Search} from '..'
+import {SkillAutosuggest} from '..'
 
 export default class ProjectAddPeople extends React.Component {
   componentWillMount() {
@@ -33,7 +33,7 @@ export default class ProjectAddPeople extends React.Component {
                   <div className="small-6 columns">
                     <h3>Search for more team members</h3>
                     <div className="skill-search">
-                      <Search />
+                      <SkillAutosuggest />
                     </div>
                   </div>
                   <div className="small-6 columns" />
