@@ -121,6 +121,10 @@ ul.menu-items {
   font-size: 10px;
 }
 
+.no-padding {
+  padding: 0;
+}
+
 #uport-qr {
   position: fixed;
   top: 88px !important;
@@ -158,11 +162,17 @@ ul.menu-items {
   }
 
   .confirm-body-list {
+    height: 0;
     max-height: 380px;
     overflow-y: scroll;
     overflow-x: hidden;
     margin: 0 0 0 10px;
     padding-right: 10px;
+    transition: height 1.5s;
+    -webkit-transition: height 1.5s;
+    -moz-transition: height 1.5s;
+    -ms-transition: height 1.5s;
+    -o-transition: height 1.5s;
   }
 
   .confirm-body-list::-webkit-scrollbar-track
@@ -364,7 +374,7 @@ ul.menu-items {
 }
 .react-autosuggest__container--open {
   position: absolute;
-  background-color: #eeeeee;
+  background-color: rgba(224,224,224,1);
   border: 1px solid $midgrey;
 }
 .react-autosuggest__input {
@@ -385,17 +395,20 @@ ul.menu-items {
 
 }
 ul.react-autosuggest__suggestions-list {
-  margin: 5px 10px 5px 10px;
+  margin: 0;
   list-style: none;
   li {
     line-height: 1.5rem;
   }
 }
 .react-autosuggest__suggestion {
-  color: purple;
+  padding: 5px 10px 5px 10px;
+  font-weight: bold;
 }
 //.react-autosuggest__suggestion--first
-//.react-autosuggest__suggestion--highlighted
+.react-autosuggest__suggestion--highlighted {
+  background-color: rgba(255,255,255,1);
+}
 //.react-autosuggest__section-container
 //.react-autosuggest__section-container--first
 //.react-autosuggest__section-title'
@@ -417,6 +430,12 @@ ul.react-autosuggest__suggestions-list {
 
 .profile-header {
   padding-bottom: 25px;
+  .profile-photo {
+    max-height: 50px;
+    max-width: 50px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+  }
 }
 
 .profile-body {
@@ -433,10 +452,15 @@ ul.react-autosuggest__suggestions-list {
     }
     .profile-body-list-scroll {
         margin-top: 0;
-        max-height: 355px;
         overflow-y: scroll;
         overflow-x: hidden;
         border: 1px solid $lightgrey;
+    }
+    .profile-body-list-scroll-tall {
+      max-height: 300px;
+    }
+    .profile-body-list-scroll-short {
+      max-height: 175px;
     }
     .profile-body-list-scroll::-webkit-scrollbar-track
     {

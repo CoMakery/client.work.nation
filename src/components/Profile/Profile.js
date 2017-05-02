@@ -58,10 +58,16 @@ export default class Profile extends React.Component {
     return (
       <div className="profile-container">
         <div className="profile-header">
-          { this.avatar() }
-          <h2 className="">{this.state.name}</h2>
-          <div className="small"><a href={'#'}>view reputon data</a></div>
-          <div className="small"><a href={'https://ropsten.io/address/' + this.state.uportAddress} target="_blank">view uPort Ethereum contract</a></div>
+          <div className="row">
+            <div className="small-2 columns no-padding text-center">
+              { this.avatar() }
+            </div>
+            <div className="small-10 columns">
+              <h2 className="">{this.state.name}</h2>
+              <div className="small"><a href={'#'}>view reputon data</a></div>
+              <div className="small"><a href={'https://ropsten.io/address/' + this.state.uportAddress} target="_blank">view uPort Ethereum contract</a></div>
+            </div>
+          </div>
         </div>
         <div className="profile-body">
           <div className="profile-body-list">
@@ -77,13 +83,13 @@ export default class Profile extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="profile-body-list-scroll">
+            <div className="profile-body-list-scroll profile-body-list-scroll-tall">
               { this.skills() }
             </div>
           </div>
           <div className="profile-body-list">
             <h3>Projects</h3>
-            <div className="profile-body-list-scroll">
+            <div className="profile-body-list-scroll profile-body-list-scroll-short">
               <div>Manic Mondays</div>
               <div>Project Tuesday</div>
               <div>Lorem Ipsum</div>
@@ -96,7 +102,7 @@ export default class Profile extends React.Component {
 
   avatar = () => {
     if (this.state.avatar_image_ipfs_key) {
-      return <img src={'//ipfs.io/ipfs/' + this.state.avatar_image_ipfs_key} />
+      return <img src={'//ipfs.io/ipfs/' + this.state.avatar_image_ipfs_key} className="profile-photo" />
     }
   }
 
