@@ -1,6 +1,7 @@
 export App from './App/App'
 export ClaimSkill from './ClaimSkill/ClaimSkill'
 export Confirm from './Confirm/Confirm'
+export Demo from './Demo/Demo'
 export Home from './Home/Home'
 export Login from './Login/Login'
 export Logout from './Logout/Logout'

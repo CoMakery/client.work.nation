@@ -4,7 +4,7 @@ import {BrowserRouter, Link, Route, Switch} from 'react-router-dom'
 import MetaTags from 'react-meta-tags'
 
 import Auth from '../../models/Authentication'
-import {Confirm, Home, Login, Logout, Project, ProjectAddPeople, Root} from '..'
+import {Confirm, Demo, Home, Login, Logout, Project, ProjectAddPeople, Root} from '..'
 import '../../../node_modules/foundation-sites/dist/css/foundation-flex.css'  // Foundation with FlexGrid: http://foundation.zurb.com/sites/docs/flex-grid.html
 import './App.scss'
 
@@ -78,6 +78,7 @@ export default class App extends React.Component {
       <Route exact path="/"
         render={(props) => <Root {...props} currentUser={this.state.currentUser} />}
       />
+      <Route exact path="/demo" component={Demo} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/home"
         render={(props) => <Home {...props} currentUser={this.state.currentUser} />}
