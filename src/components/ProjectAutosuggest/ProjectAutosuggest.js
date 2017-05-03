@@ -35,13 +35,13 @@ export default class SkillAutosuggest extends React.Component {
 
   getSuggestionValue = suggestion => suggestion.permanodeId
 
-  renderSuggestion = suggestion => (
+  renderSuggestion = project => (
     <div>
       <div>
-        {suggestion.name}
+        {project.name}
       </div>
       <div>
-        (DID: {this.didShort(suggestion.permanodeId)})
+        (DID: {this.didShort(project.permanodeId)})
       </div>
     </div>
   )

@@ -14,7 +14,7 @@ export default class Profile extends React.Component {
     this.state = {
       uportAddress: this.props.uportAddress,
       name: null,
-      skill_claims: [],
+      skillClaims: [],
       errors: [],
     }
   }
@@ -91,7 +91,7 @@ export default class Profile extends React.Component {
   }
 
   skills = () => {
-    return this.state.skill_claims.map((skill, index) => {
+    return this.state.skillClaims.map((skill, index) => {
       return [
         <div key={index} className="row">
           <div className="small-2 columns small confirmation-count">

@@ -88,7 +88,7 @@ export default class Confirm extends React.Component {
   rows = () => {
     if (isBlank(this.state.users)) return
     return this.state.users.map((user) => {
-      return user.skill_claims.map((skill) => {
+      return user.skillClaims.map((skill) => {
         return <div className="confirm-body-row-wrapper">
           <div className="row confirm-body-row">
             <div className="small-2 columns">17 April 2017</div>
