@@ -3,6 +3,9 @@ import React from 'react'
 import Autosuggest from 'react-autosuggest'
 import http from 'axios'
 import isPresent from 'is-present'
+import debug from 'debug'
+
+const error = debug('wn:error')
 
 export default class SkillAutosuggest extends React.Component {
   constructor(props) {
@@ -23,10 +26,10 @@ export default class SkillAutosuggest extends React.Component {
       if (isPresent(response.data)) {
         this.setState({options: response.data}) //, () => d(this.state))
       } else {
-        this.addError(`No data found`, `Server URL: ${projectsApiUrl}`)
+        error(`No data found`, `Server URL: ${projectsApiUrl}`)
       }
     }).catch(err => {
-      this.addError(`Could not reach server`, `Url: ${projectsApiUrl}`, err.toString())
+      error(`Could not reach server`, `Url: ${projectsApiUrl}`, err.toString())
     })
   }
 

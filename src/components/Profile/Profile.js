@@ -1,8 +1,11 @@
 import isPresent from 'is-present'
-import {clone, omit} from 'lodash'
+import {omit} from 'lodash'
 import http from 'axios'
 import {d} from 'lightsaber/lib/log'
 import React from 'react'
+import debug from 'debug'
+
+const error = debug('wn:error')
 
 export default class Profile extends React.Component {
 
@@ -18,7 +21,7 @@ export default class Profile extends React.Component {
 
   componentDidMount() {
     if (!this.state.uportAddress) {
-      this.addError(`Can't load user "${this.state.uportAddress}"`)
+      error(`Can't load user "${this.state.uportAddress}"`)
       return
     }
     const serverUrl = `${process.env.REACT_APP_API_SERVER}/users/${this.state.uportAddress}`
@@ -28,33 +31,14 @@ export default class Profile extends React.Component {
         const newData = omit(response.data, 'uportAddress')
         this.setState(newData) //, () => d({state: this.state}))
       } else {
-        this.addError(`No data found for user ${this.state.uportAddress}`, `Server URL: ${serverUrl}`)
+        error(`No data found for user ${this.state.uportAddress}`, `Server URL: ${serverUrl}`)
       }
     }).catch(err => {
-      this.addError(`Could not reach server`, `Url: ${serverUrl}`, err.toString())
+      error(`Could not reach server`, `Url: ${serverUrl}`, err.toString())
     })
   }
 
-  addError(message, ...details) {
-    let errors = clone(this.state.errors)
-    errors.push([message, ...details])
-    this.setState({errors}) //, () => d({state: this.state}))
-  }
-
   render() {
-    if (isPresent(this.state.errors)) {
-      return <div>{
-        this.state.errors.map(([message, ...details], key) => {
-          return <div className="callout alert" key={key} >
-            <h5>{message}</h5>
-            {details.map(detail => <p>{detail}</p>)}
-          </div>
-        })
-      }</div>
-    }
-
-    // If no errors:
-    // d({state: this.state})
     return (
       <div className="profile-container">
         <div className="profile-header">

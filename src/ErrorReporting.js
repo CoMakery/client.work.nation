@@ -11,3 +11,6 @@ if (process.env.NODE_ENV === 'production') {
 
   raven.install()
 }
+
+// report errors in console:
+window.localStorage.debug = 'wn:error'

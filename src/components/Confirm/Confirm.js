@@ -1,12 +1,14 @@
 import isBlank from 'is-blank'
 import isPresent from 'is-present'
-import {clone} from 'lodash'
 import http from 'axios'
 import {d} from 'lightsaber/lib/log'
 import React from 'react'
+import debug from 'debug'
 
 import UportUser from '../../models/UportUser'
 import Auth from '../../models/Authentication'
+
+const error = debug('wn:error')
 
 export default class Confirm extends React.Component {
 
@@ -34,17 +36,11 @@ export default class Confirm extends React.Component {
         }
         document.querySelector('.confirm-body-list').style.height = this.state.confirmDivHeight + 'px'
       } else {
-        this.addError(`No data found`, `Server URL: ${serverUrl}`)
+        error(`No data found`, `Server URL: ${serverUrl}`)
       }
     }).catch(err => {
-      this.addError(`Could not reach server`, `Url: ${serverUrl}`, err.toString())
+      error(`Could not reach server`, `Url: ${serverUrl}`, err.toString())
     })
-  }
-
-  addError(message, ...details) {
-    let errors = clone(this.state.errors)
-    errors.push([message, ...details])
-    this.setState({errors}) //, () => d({state: this.state}))
   }
 
   handleConfirm = (event) => {
@@ -54,18 +50,6 @@ export default class Confirm extends React.Component {
   render() {
     if (!Auth.getCurrentUser()) return null
 
-    if (isPresent(this.state.errors)) {
-      return <div>{
-        this.state.errors.map(([message, ...details], key) => {
-          return <div className="callout alert" key={key}>
-            <h5>{message}</h5>
-            {details.map(detail => <p>{detail}</p>)}
-          </div>
-        })
-      }</div>
-    }
-
-    // If no errors:
     return (
       <div className="row">
         <div className="small-8 columns">
