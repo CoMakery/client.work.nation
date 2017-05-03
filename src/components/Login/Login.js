@@ -46,7 +46,7 @@ export default class Login extends React.Component {
                   <input type="submit" value="sign in with uPort" onClick={this.uportLogin}
                     className="button button-cyan yellow-text button-thin button-fullwidth" />
                   <div className="sign-up-link">
-                    <a href="#" className="sign-up-link">sign up for a uPort
+                    <a href="https://www.uport.me" className="sign-up-link">sign up for a uPort
                       account ></a>
                   </div>
                 </div>
@@ -98,8 +98,10 @@ export default class Login extends React.Component {
           </div>
           <div className="row">
             <div className="small-12 columns text-center github">
-              <img src="/static/images/icon_github.svg"
-                className="icon-github" />
+              <a href="https://github.com/worknation" target="_blank">
+                <img src="/static/images/icon_github.svg"
+                  className="icon-github" />
+              </a>
             </div>
           </div>
         </div>
@@ -139,8 +141,10 @@ export default class Login extends React.Component {
         </div>
         <div className="row">
           <div className="small-12 columns text-center get-started-button">
-            <input type="submit" value="get your blockchain ID from uPort"
-              className="button button-lt-blue yellow-text button-thin" />
+            <a href="https://www.uport.me" target="_blank">
+              <input type="submit" value="get your blockchain ID from uPort"
+                className="button button-lt-blue yellow-text button-thin" />
+            </a>
           </div>
         </div>
       </div>
