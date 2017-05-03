@@ -4,9 +4,13 @@ $white: #ffffff;
 $black: #000000;
 $midgrey: #95989a;
 $lightgrey: #ededed;
-$bright: yellow;
+$greytext: #BFBFBF;
+$yellow: yellow;
 $orange: #ffb40b;
 $royalblue: #0b56ff;
+$cyan: rgba(0,205,204,1);
+$lightblue: rgba(0,157,255,1);
+$skyblue: #9DE1FF;
 
 body {
   background-color: $black;
@@ -14,13 +18,13 @@ body {
   background-position: center top;
   background-size: 100% auto;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  // background-attachment: fixed;
   height: 100%;
   //color: white;
 }
 
 h1 {
-  color: $bright;
+  color: $yellow;
 }
 
 .page-wrapper {
@@ -70,7 +74,7 @@ ul.menu-items {
 }
 
 .button:hover {
-  color: $bright;
+  color: $yellow;
 }
 
 .button-thin {
@@ -81,28 +85,36 @@ ul.menu-items {
   width: 100%
 }
 
+.yellow-text {
+  color: $yellow;
+}
+
+.yellow-text:hover {
+  color: $white;
+}
+
 .button-cyan {
-  background-color: rgba(0,205,204,1);
+  background-color: $cyan;
 }
 
 .button-cyan:hover {
-  background-color: rgba(0,205,204,1);
+  background-color: $cyan;
 }
 
 .button-cyan:focus {
-  background-color: rgba(0,205,204,1);
+  background-color: $cyan;
 }
 
 .button-lt-blue {
-  background-color: rgba(0,157,255,1);
+  background-color: $lightblue;
 }
 
 .button-lt-blue:hover {
-  background-color: rgba(0,157,255,1);
+  background-color: $lightblue;
 }
 
 .button-lt-blue:focus {
-  background-color: rgba(0,157,255,1);
+  background-color: $lightblue;
 }
 
 .icon-confirm {
@@ -111,6 +123,11 @@ ul.menu-items {
 
 .icon-message {
   max-width: 20px;
+}
+
+.icon-logout {
+  max-height: 30px;
+  max-width: 30px;
 }
 
 .tiny {
@@ -134,6 +151,141 @@ ul.menu-items {
   z-index:100;
   // background-color:rgba(0,0,0,0);
   text-align:center;
+}
+
+/* Landing page styling */
+.landing-container {
+
+}
+
+.landing-hero {
+  margin: 0 auto;
+  padding: 235px 0 0 0;
+  height: 675px;
+  vertical-align: middle;
+  h1.project-title {
+    font-size: 60px;
+    font-weight: bold;
+    color: $cyan;
+  }
+  h3.tagline {
+    margin: 0;
+    font-size: 30px;
+    font-weight: bold;
+    color: $white;
+  }
+  .hero-action {
+    padding: 25px 20px;
+  }
+  div.sign-up-link {
+    padding: 8px 0 0 0;
+  }
+  a.sign-up-link {
+    font-size: 14px;
+    font-style: italic;
+    font-weight: bold;
+    color: $greytext;
+  }
+}
+
+.landing-for-who {
+  .vert-bottom-outside {
+    display:table;
+    height:100%;
+    width: 100%;
+  }
+  .vert-bottom-inside {
+    display:table-cell;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    vertical-align: bottom;
+  }
+  .icon-for-individuals {
+    padding: 0 50px 40px 50px;
+  }
+  .icon-for-companies {
+    padding: 0 50px 40px 50px;
+  }
+  h4 {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.5em;
+    padding: 0 10px;
+  }
+  h4.headline {
+    color: $white;
+  }
+  h4.description {
+    color: $greytext;
+  }
+  div.github {
+    padding: 100px 0;
+  }
+  .icon-github {
+    width: 300px;
+  }
+}
+
+.landing-video {
+  height: 700px;
+  background-color: $skyblue;
+  padding: 92px 0 0 0;
+  .video-container {
+    margin: 0 auto;
+    padding: 250px 0 0 0;
+    height: 515px;
+    width: 900px;
+    background-color: $white;
+  }
+  h3.intro-video {
+    font-size: 30px;
+    font-weight: bold;
+    color: $midgrey;
+    text-align: center;
+  }
+}
+
+.landing-get-started {
+  background-image: url('/static/images/background-upsidedown-2560w.jpg');
+  background-position: center top;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  min-height: 450px;
+  color: $white;
+  padding: 120px 0 0 0;
+  h2 {
+    font-size: 40px;
+    font-weight: bold;
+  }
+  h3 {
+    font-size: 30px;
+    font-weight: bold;
+    padding-bottom: 30px;
+  }
+  h4 {
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 10px;
+  }
+  div.get-started-button {
+    padding-top: 50px;
+    input {
+      padding-left: 100px;
+      padding-right: 100px;
+    }
+  }
+}
+
+.landing-footer {
+  height: 70px;
+  color: $greytext;
+  padding-top: 20px;
+}
+
+.temporary-vertical-space {
+  height: 100px;
 }
 
 /* Confirm page styling */

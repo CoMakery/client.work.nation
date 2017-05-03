@@ -39,10 +39,8 @@ export default class App extends React.Component {
         </MetaTags>
         <BrowserRouter>
           <div className="page-wrapper">
-            <div className="float-right menu-outside">
-              <div className="menu-inside">
-                {this.menu()}
-              </div>
+            <div className="">
+              {this.menu()}
             </div>
             <div className="">
               {this.routes()}
@@ -55,17 +53,23 @@ export default class App extends React.Component {
 
   menu = () => {
     if (this.state.currentUser) {   // need to store this in state to get it to render properly
-      return <ul className="menu-items">
-        <li><Link to="/home"><img src="/static/images/profile-photo.png" /></Link></li>
-        <li><Link to="/confirm"><img src="/static/images/icon_confirmed.svg" /></Link></li>
-        <li><Link to="/search"><img src="/static/images/icon_search.svg" /></Link></li>
-        <li><Link to="/project"><img src="/static/images/icon_rocket.svg" /></Link></li>
-        <li><Link to="/logout"><span className="tiny">[Logout]</span></Link></li>
-      </ul>
+      return <div className="float-right menu-outside">
+        <div className="menu-inside">
+          <ul className="menu-items">
+            <li><Link to="/home"><img src="/static/images/profile-photo.png" /></Link></li>
+            <li><Link to="/confirm"><img src="/static/images/icon_confirmed.svg" /></Link></li>
+            <li><Link to="/search"><img src="/static/images/icon_search.svg" /></Link></li>
+            <li><Link to="/project"><img src="/static/images/icon_rocket.svg" /></Link></li>
+            <li><Link to="/logout"><img src="/static/images/icon_loggedout.svg" className="icon-logout" /></Link></li>
+          </ul>
+        </div>
+      </div>
     } else {
-      return <ul>
-        <li><Link to="/login">[Blank Avatar Image]</Link></li>
-      </ul>
+      return <div className="float-right">
+        <ul>
+          <li><Link to="/login"><img src="/static/images/icon_loggedout.svg" className="icon-logout" /></Link></li>
+        </ul>
+      </div>
     }
   }
 
