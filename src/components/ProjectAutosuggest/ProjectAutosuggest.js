@@ -7,7 +7,7 @@ import debug from 'debug'
 import server from '../../models/Server'
 
 const error = debug('wn:error')
-const ADD_PROJECT = 'Add Project'
+const SETUP_PROJECT = 'Setup a Project'
 
 export default class ProjectAutosuggest extends React.Component {
   constructor(props) {
@@ -38,10 +38,10 @@ export default class ProjectAutosuggest extends React.Component {
   addProject = () => this.props.history.push('/project')  // TODO fix
 
   renderSuggestion = data => {
-    if (data.name === ADD_PROJECT) {
-      return <div className="add-project" onClick={this.addProject}>
-        <img src="/static/images/icon_rocket.svg" />
-        {ADD_PROJECT}
+    if (data.name === SETUP_PROJECT) {
+      return <div className="setup-project" onClick={this.addProject}>
+        <img src="/static/images/icon_rocket.svg" className="setup-project" />
+        {SETUP_PROJECT}
       </div>
     } else {
       return <div>
@@ -69,7 +69,7 @@ export default class ProjectAutosuggest extends React.Component {
     const suggestions = this.state.options.filter(option =>
       option.name.toLowerCase().slice(0, inputLength) === inputValue
     )
-    return (suggestions.length === 0) ? [{name: ADD_PROJECT, permanodeId: ''}] : suggestions
+    return (suggestions.length === 0) ? [{name: SETUP_PROJECT, permanodeId: ''}] : suggestions
   }
 
   onChange = (event, {newValue}) => {
