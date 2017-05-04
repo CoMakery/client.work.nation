@@ -1,13 +1,13 @@
 import {d} from 'lightsaber/lib/log'
 import React from 'react'
 import isPresent from 'is-present'
-import debug from 'debug'
+// import debug from 'debug'
 
 import {SkillAutosuggest} from '..'
 import Auth from '../../models/Authentication'
 import server from '../../models/Server'
 
-const error = debug('wn:error')
+// const error = debug('wn:error')
 
 export default class ProjectAddPeople extends React.Component {
   constructor(props) {
@@ -30,12 +30,12 @@ export default class ProjectAddPeople extends React.Component {
     // /users?perspective=0xff902fc776998336a213c5c6050a4572b7453643&skill=UX&depth=4
     const projectsApiUrl = `${process.env.REACT_APP_API_SERVER}/users/?perspective=${Auth.getUportAddress()}&skill=${this.state.skill}&depth=4`
     server.get(projectsApiUrl).then(response => {
+      this.setState({people: response.data}, () => d(this.state))
+      document.querySelector('.loading-spinner').style.display = 'none'
       if (isPresent(response.data)) {
-        this.setState({people: response.data}, () => d(this.state))
-        document.querySelector('.loading-spinner').style.display = 'none'
         document.querySelector('.project-body-list').style.display = 'block'
       } else {
-        error(`No data found`, `Server URL: ${projectsApiUrl}`)
+        console.log('No Results')  // TODO show in UI
       }
     })
   }
