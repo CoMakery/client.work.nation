@@ -1,6 +1,7 @@
 import { d } from 'lightsaber/lib/log'
 import React from 'react'
 import debug from 'debug'
+import Auth from '../../models/Authentication'
 
 import UportUser from '../../models/UportUser'
 
@@ -19,6 +20,12 @@ export default class Login extends React.Component {
         }
       }).catch(err => error(err))
     }
+  }
+
+  demoLogin = (event) => {
+    const uportAddress = event.target.dataset.uport
+    Auth.setCurrentUser({uportAddress})
+    this.props.history.push('/home')
   }
 
   render() {
@@ -51,8 +58,9 @@ export default class Login extends React.Component {
                   </div>
                 </div>
                 <div className="small-6 columns hero-action">
-                  <input type="submit" value="browse projects"
-                    className="button button-lt-blue yellow-text button-thin button-fullwidth" />
+                  <div className="button button-lt-blue yellow-text button-thin button-fullwidth" onClick={this.demoLogin} data-uport="0xfdab345e368120a5ba99549c1f74371cd73cdb93">
+                    login as a demo user
+                  </div>
                 </div>
               </div>
             </div>
