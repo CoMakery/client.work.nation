@@ -32,7 +32,7 @@ export default class App extends React.Component {
     return (
       <div>
         <MetaTags>
-          <title>work.nation</title>
+          <title>Work.nation</title>
           <meta id="meta-description" name="description" content="work.nation" />
           <meta id="og-title" property="og:title" content="Work.Nation" />
           <link rel="shortcut icon" type="image/png" href="/static/images/favicon.png" />

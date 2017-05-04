@@ -1,11 +1,11 @@
 import {d} from 'lightsaber/lib/log'
 import React from 'react'
-import http from 'axios'
 import isPresent from 'is-present'
 import debug from 'debug'
 
-import Auth from '../../models/Authentication'
 import {SkillAutosuggest} from '..'
+import Auth from '../../models/Authentication'
+import server from '../../models/Server'
 
 const error = debug('wn:error')
 
@@ -28,14 +28,12 @@ export default class ProjectAddPeople extends React.Component {
   search = () => {
     // /users?perspective=0xff902fc776998336a213c5c6050a4572b7453643&skill=UX&depth=4
     const projectsApiUrl = `${process.env.REACT_APP_API_SERVER}/users/?perspective=${Auth.getUportAddress()}&skill=${this.state.skill}&depth=4`
-    http.get(projectsApiUrl).then(response => {
+    server.get(projectsApiUrl).then(response => {
       if (isPresent(response.data)) {
         this.setState({people: response.data}, () => d(this.state))
       } else {
         error(`No data found`, `Server URL: ${projectsApiUrl}`)
       }
-    }).catch(err => {
-      error(`Could not reach server`, `Url: ${projectsApiUrl}`, err.toString())
     })
   }
 

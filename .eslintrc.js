@@ -18,6 +18,7 @@ const config = {
     'no-unused-vars': [WARN, { 'argsIgnorePattern': '^_', 'varsIgnorePattern': '^(' + unusedVars.join('|') + ')$' }],
     'no-warning-comments': OFF,
     'promise/always-return': OFF,
+    'promise/catch-or-return': OFF,
     'react/prop-types': OFF,
   },
 }

@@ -1,9 +1,10 @@
 import isPresent from 'is-present'
 import {omit} from 'lodash'
-import http from 'axios'
 import {d} from 'lightsaber/lib/log'
 import React from 'react'
 import debug from 'debug'
+
+import server from '../../models/Server'
 
 const error = debug('wn:error')
 
@@ -25,16 +26,14 @@ export default class Profile extends React.Component {
       return
     }
     const serverUrl = `${process.env.REACT_APP_API_SERVER}/users/${this.state.uportAddress}`
-    http.get(serverUrl).then(response => {
+    server.get(serverUrl).then(response => {
       if (isPresent(response.data)) {
         // d(response.data)
         const newData = omit(response.data, 'uportAddress')
-        this.setState(newData) //, () => d({state: this.state}))
+        this.setState(newData) // , () => d({state: this.state}))
       } else {
         error(`No data found for user ${this.state.uportAddress}`, `Server URL: ${serverUrl}`)
       }
-    }).catch(err => {
-      error(`Could not reach server`, `Url: ${serverUrl}`, err.toString())
     })
   }
 
@@ -95,7 +94,7 @@ export default class Profile extends React.Component {
       return [
         <div key={index} className="row">
           <div className="small-2 columns small confirmation-count">
-            {skill.confirmationCount}
+            {skill.confirmationsCount}
           </div>
           <div className="small-8 columns">
             {skill.name}<br />
@@ -113,11 +112,11 @@ export default class Profile extends React.Component {
     return [
       <div key="temporary-key">
         <p className="tiny">
-          {skill.confirmationCount} confirmations from
+          {skill.confirmationsCount} confirmations from
           Project Neptune: {skill.confirmations.map(conf => conf.confirmerName).join(', ')}
         </p>
         <p className="tiny">
-          {skill.confirmationCount} confirmations from
+          {skill.confirmationsCount} confirmations from
           Project Jupiter: {skill.confirmations.map(conf => conf.confirmerName).join(', ')}
         </p>
       </div>

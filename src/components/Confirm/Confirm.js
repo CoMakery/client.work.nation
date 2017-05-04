@@ -1,12 +1,12 @@
-import isBlank from 'is-blank'
+import moment from 'moment'
 import isPresent from 'is-present'
-import http from 'axios'
 import {d} from 'lightsaber/lib/log'
 import React from 'react'
 import debug from 'debug'
 
-import UportUser from '../../models/UportUser'
 import Auth from '../../models/Authentication'
+import UportUser from '../../models/UportUser'
+import server from '../../models/Server'
 
 const error = debug('wn:error')
 
@@ -17,6 +17,7 @@ export default class Confirm extends React.Component {
     this.state = {
       uportAddress: this.props.match.params.uportAddress,
       errors: [],
+      skillClaims: [],
     }
   }
 
@@ -25,10 +26,10 @@ export default class Confirm extends React.Component {
   }
 
   componentDidMount() {
-    const serverUrl = `${process.env.REACT_APP_API_SERVER}/users`  // TODO: server `/projects` endpoint
-    http.get(serverUrl).then(response => {
+    const serverUrl = `${process.env.REACT_APP_API_SERVER}/users/${Auth.getUportAddress()}/confirmations`
+    server.get(serverUrl).then(response => {
       if (isPresent(response.data)) {
-        this.setState({users: response.data}) //, () => d(this.state))
+        this.setState({skillClaims: response.data}) //, () => d(this.state))
         if (response.data.length <= 7) { // up to 7 rows of data for dynamic height
           this.state.confirmDivHeight = (response.data.length + 1) * 51 // 51px row height with margin spacing
         } else { // beyond 7 rows of data and max-height is reached
@@ -38,8 +39,6 @@ export default class Confirm extends React.Component {
       } else {
         error(`No data found`, `Server URL: ${serverUrl}`)
       }
-    }).catch(err => {
-      error(`Could not reach server`, `Url: ${serverUrl}`, err.toString())
     })
   }
 
@@ -71,7 +70,7 @@ export default class Confirm extends React.Component {
                 </div>
               </div>
               <div className="confirm-body-list">
-                { this.rows() }
+                {this.state.skillClaims.map(skillClaim => this.showSkillClaim(skillClaim))}
               </div>
             </div>
             <div className="confirm-footer">
@@ -85,31 +84,32 @@ export default class Confirm extends React.Component {
     )
   }
 
-  rows = () => {
-    if (isBlank(this.state.users)) return
-    return this.state.users.map((user) => {
-      return user.skillClaims.map((skill) => {
-        return <div className="confirm-body-row-wrapper">
-          <div className="row confirm-body-row">
-            <div className="small-2 columns">17 April 2017</div>
-            <div className="small-3 columns">Project Neptune</div>
-            <div className="small-3 columns"><img src="/static/images/icon_blank_avatar.svg" className="icon-small-avatar" /> {user.name || '[Name unknown]'}</div>
-            <div className="small-3 columns">{skill.name}</div>
-            {this.confirmationColumns(skill)}
-          </div>
+  showSkillClaim = (skillClaim) => {
+    return <div className="confirm-body-row-wrapper" key={skillClaim.ipfsReputonKey}>
+      <div className="row confirm-body-row">
+        <div className="small-2 columns">{moment(skillClaim.createdAt).format('DD MMM YYYY')}</div>
+        <div className="small-3 columns">[Project Name]</div>
+        <div className="small-3 columns">
+          <img src="/static/images/icon_blank_avatar.svg" className="icon-small-avatar" />
+          {skillClaim.user.name || '[Name unknown]'}
         </div>
-      })
-    })
+        <div className="small-3 columns">{skillClaim.name}</div>
+        <div key={skillClaim.ipfsReputonKey} className="small-1 columns text-center cell-end-row">
+          {this.checkmark(skillClaim)}
+        </div>
+      </div>
+    </div>
   }
 
-  confirmationColumns = (skill) => {
-    if (this.props.currentUser) {
-      return <div key={skill.ipfsReputonKey + '-confirm'} className="small-1 columns text-center cell-end-row">
-        <span onClick={this.handleConfirm} data-skill={skill.ipfsReputonKey}>
-          <img className="icon-confirm" src="/static/images/icon_confirmed.svg" />
-        </span>
-      </div>
+  checkmark = (skillClaim) => {
+    if (skillClaim.confirmedStatus[Auth.getUportAddress()]) {
+      return <span>
+        <img className="icon-confirm" src="/static/images/icon_confirmed.svg" />
+      </span>
+    } else {
+      return <span onClick={this.handleConfirm} data-skill={skillClaim.ipfsReputonKey}>
+        <img className="icon-confirm" src="/static/images/icon_unconfirmed.svg" />
+      </span>
     }
   }
-
 }

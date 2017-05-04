@@ -1,9 +1,10 @@
 import {d} from 'lightsaber/lib/log'
 import React from 'react'
 import Autosuggest from 'react-autosuggest'
-import http from 'axios'
 import isPresent from 'is-present'
 import debug from 'debug'
+
+import server from '../../models/Server'
 
 const error = debug('wn:error')
 const ADD_PROJECT = 'Add Project'
@@ -23,14 +24,12 @@ export default class ProjectAutosuggest extends React.Component {
 
   componentWillMount() {
     const projectsApiUrl = `${process.env.REACT_APP_API_SERVER}/projects`
-    http.get(projectsApiUrl).then(response => {
+    server.get(projectsApiUrl).then(response => {
       if (isPresent(response.data)) {
         this.setState({options: response.data}) //, () => d(this.state))
       } else {
         error(`No data found`, `Server URL: ${projectsApiUrl}`)
       }
-    }).catch(err => {
-      error(`Could not reach server`, `Url: ${projectsApiUrl}`, err.toString())
     })
   }
 
