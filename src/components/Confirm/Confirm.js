@@ -26,7 +26,7 @@ export default class Confirm extends React.Component {
   }
 
   componentDidMount() {
-    const serverUrl = `${process.env.REACT_APP_API_SERVER}/users/${Auth.getUportAddress()}/confirmations`
+    const serverUrl = `${process.env.REACT_APP_API_SERVER}/users/${Auth.getUportAddress()}/confirmables`
     server.get(serverUrl).then(response => {
       if (isPresent(response.data)) {
         this.setState({skillClaims: response.data}) //, () => d(this.state))
