@@ -6,8 +6,9 @@ import isPresent from 'is-present'
 import debug from 'debug'
 
 const error = debug('wn:error')
+const ADD_PROJECT = 'Add Project'
 
-export default class SkillAutosuggest extends React.Component {
+export default class ProjectAutosuggest extends React.Component {
   constructor(props) {
     super(props)
 
@@ -35,16 +36,25 @@ export default class SkillAutosuggest extends React.Component {
 
   getSuggestionValue = suggestion => suggestion.permanodeId
 
-  renderSuggestion = project => (
-    <div>
-      <div>
-        {project.name}
+  addProject = () => this.props.history.push('/project')  // TODO fix
+
+  renderSuggestion = data => {
+    if (data.name === ADD_PROJECT) {
+      return <div className="add-project" onClick={this.addProject}>
+        <img src="/static/images/icon_rocket.svg" />
+        {ADD_PROJECT}
       </div>
-      <div>
-        (DID: {this.didShort(project.permanodeId)})
+    } else {
+      return <div>
+        <div>
+          {data.name}
+        </div>
+        <div>
+          (DID: {this.didShort(data.permanodeId)})
+        </div>
       </div>
-    </div>
-  )
+    }
+  }
 
   didShort = (did) => {
     let meat = did.replace(/\/ipfs\//, '')
@@ -55,9 +65,12 @@ export default class SkillAutosuggest extends React.Component {
     const inputValue = value.trim().toLowerCase()
     const inputLength = inputValue.length
 
-    return inputLength === 0 ? [] : this.state.options.filter(option =>
+    if (inputLength === 0) return []
+
+    const suggestions = this.state.options.filter(option =>
       option.name.toLowerCase().slice(0, inputLength) === inputValue
     )
+    return (suggestions.length === 0) ? [{name: ADD_PROJECT, permanodeId: ''}] : suggestions
   }
 
   onChange = (event, {newValue}) => {

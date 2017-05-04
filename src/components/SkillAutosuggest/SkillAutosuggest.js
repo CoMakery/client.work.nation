@@ -24,7 +24,7 @@ export default class SkillAutosuggest extends React.Component {
     const skillsApiUrl = `${process.env.REACT_APP_API_SERVER}/skills`
     http.get(skillsApiUrl).then(response => {
       if (isPresent(response.data)) {
-        this.setState({skills: response.data}, () => d(this.state))
+        this.setState({skills: response.data}) //, () => d(this.state))
       } else {
         error(`No data found`, `Server URL: ${skillsApiUrl}`)
       }

@@ -31,7 +31,7 @@ export default class ClaimSkill extends React.Component {
               <SkillAutosuggest onValueUpdate={this.updateSkill} />
             </div>
             <div className="small-5 columns">
-              <ProjectAutosuggest onValueUpdate={this.updateProjectId} />
+              <ProjectAutosuggest {...this.props} onValueUpdate={this.updateProjectId} />
             </div>
             <div className="small-2 columns">
               <input type="submit" value="add" className="button button-cyan button-thin button-fullwidth" />
