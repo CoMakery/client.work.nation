@@ -56,18 +56,18 @@ export default class App extends React.Component {
       return <div className="float-right menu-outside">
         <div className="menu-inside">
           <ul className="menu-items">
-            <li><Link to="/home"><img src="/static/images/profile-photo.png" /></Link></li>
-            <li><Link to="/confirm"><img src="/static/images/icon_confirmed.svg" /></Link></li>
-            <li><Link to="/search"><img src="/static/images/icon_search.svg" /></Link></li>
-            <li><Link to="/project"><img src="/static/images/icon_rocket.svg" /></Link></li>
-            <li><Link to="/logout"><img src="/static/images/icon_loggedout.svg" className="icon-logout" /></Link></li>
+            {(this.state.avatarImageIpfsKey) ? <li><Link to="/home"><img src={'//ipfs.io/ipfs/' + this.state.avatarImageIpfsKey} className="profile-photo" /></Link></li> : <li><Link to="/home"><img src="/static/images/icon_blank_avatar.svg" className="icon-blank-avatar" /></Link></li>}
+            <li><Link to="/confirm"><img src="/static/images/icon_confirmed.svg" className="icon" /></Link></li>
+            <li><Link to="/search"><img src="/static/images/icon_search.svg" className="icon" /></Link></li>
+            <li><Link to="/project"><img src="/static/images/icon_rocket.svg" className="icon" /></Link></li>
+            <li><Link to="/logout"><img src="/static/images/icon_logout.svg" className="icon-logout" /></Link></li>
           </ul>
         </div>
       </div>
     } else {
       return <div className="float-right">
         <ul>
-          <li><Link to="/login"><img src="/static/images/icon_loggedout.svg" className="icon-logout" /></Link></li>
+          <li><Link to="/login"><img src="/static/images/icon_blank_avatar.svg" className="icon-blank-avatar" /></Link></li>
         </ul>
       </div>
     }

@@ -59,11 +59,15 @@ export default class ProjectAddPeople extends React.Component {
             <div className="project-body">
               <div className="project-body-subheader">
                 <div className="row">
-                  <div className="small-6 columns">
+                  <div className="small-6 columns no-right-padding">
                     <h3>Search for more team members</h3>
                     <div className="skill-search">
                       <SkillAutosuggest onValueUpdate={this.updateSkill} />
-                      <button className="button" onClick={this.search}>[Magnifying Glass]</button>
+                    </div>
+                  </div>
+                  <div className="small-1 columns skill-search-button-outside">
+                    <div className="skill-search-button-inside">
+                      <img src="/static/images/button_search.svg" className="skill-search-button" />
                     </div>
                   </div>
                   <div className="small-6 columns" />

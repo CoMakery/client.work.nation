@@ -85,6 +85,10 @@ ul.menu-items {
   width: 100%
 }
 
+.button-inline {
+  display: inline;
+}
+
 .yellow-text {
   color: $yellow;
 }
@@ -126,20 +130,34 @@ ul.menu-items {
 }
 
 .icon-logout {
-  max-height: 30px;
-  max-width: 30px;
+  // max-height: 30px;
+  // max-width: 30px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
 }
 
+.menu-items .icon {
+  max-width: 25px;
+}
+
+.icon-small-avatar {
+  max-height: 25px;
+  max-width: 25px;
+}
 .tiny {
-  font-size: 9px;
+  font-size: 12px;
 }
 
 .small {
-  font-size: 10px;
+  font-size: 14px;
 }
 
 .no-padding {
   padding: 0;
+}
+
+.no-right-padding {
+  padding-right: 0;
 }
 
 #uport-qr {
@@ -352,7 +370,7 @@ ul.menu-items {
 
   .confirm-body-row {
     background-color: $white;
-    padding: 10px 0 7px 10px;
+    padding: 8px 0 8px 10px;
     margin-bottom: 10px;
     color: $midgrey;
   }
@@ -405,8 +423,18 @@ ul.menu-items {
   }
 
   .skill-search {
-    // position: relative;
     height: 50px;
+  }
+  div.skill-search-button-outside {
+    position: relative;
+  }
+  div.skill-search-button-inside {
+    position: absolute;
+    top: 27px;
+    left: 0;
+  }
+  img.skill-search-button {
+    height: 39px;
   }
 
   .project-body-form {
@@ -487,7 +515,7 @@ ul.menu-items {
       }
     }
     ul.confirmation-count {
-      font-size: 14px;
+      font-size: 16px;
       margin: 0;
       list-style: none;
       li {
@@ -496,7 +524,7 @@ ul.menu-items {
       }
     }
     ul.project-count {
-      font-size: 14px;
+      font-size: 16px;
       margin: 0;
       list-style: none;
       li {
@@ -523,28 +551,28 @@ ul.menu-items {
 // Autosuggest
 
 .react-autosuggest__container {
+  width: 100%;
 }
 .react-autosuggest__container--open {
-  position: absolute;
   background-color: rgba(224,224,224,1);
-  border: 1px solid $midgrey;
+  border-left: 1px solid $midgrey;
+  border-right: 1px solid $midgrey;
+  border-bottom: 1px solid $midgrey;
 }
 .react-autosuggest__input {
+  border: 1px solid $midgrey;
 }
 .react-autosuggest__input--open {
   margin-bottom: 0;
-  border: 0;
 }
 .react-autosuggest__input--focused {
-  width: 355px;
   margin-bottom: 0;
-  border: 0;
 }
 .react-autosuggest__suggestions-container {
 
 }
 .react-autosuggest__suggestions-container--open {
-
+  border: 0;
 }
 ul.react-autosuggest__suggestions-list {
   margin: 0;
@@ -554,6 +582,7 @@ ul.react-autosuggest__suggestions-list {
   }
 }
 .react-autosuggest__suggestion {
+  display: block;
   padding: 5px 10px 5px 10px;
   font-weight: bold;
 }
@@ -631,11 +660,11 @@ ul.react-autosuggest__suggestions-list {
     	background-color: $white;
     }
     .confirmation-count {
-      font-size: 14px;
+      font-size: 16px;
       color: $orange;
     }
     .project-count {
-      font-size: 14px;
+      font-size: 16px;
       color: $royalblue;
     }
   }

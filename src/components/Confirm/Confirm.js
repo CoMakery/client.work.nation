@@ -30,7 +30,7 @@ export default class Confirm extends React.Component {
       if (isPresent(response.data)) {
         this.setState({users: response.data}) //, () => d(this.state))
         if (response.data.length <= 7) { // up to 7 rows of data for dynamic height
-          this.state.confirmDivHeight = (response.data.length + 1) * 47
+          this.state.confirmDivHeight = (response.data.length + 1) * 51 // 51px row height with margin spacing
         } else { // beyond 7 rows of data and max-height is reached
           this.state.confirmDivHeight = 380
         }
@@ -93,7 +93,7 @@ export default class Confirm extends React.Component {
           <div className="row confirm-body-row">
             <div className="small-2 columns">17 April 2017</div>
             <div className="small-3 columns">Project Neptune</div>
-            <div className="small-3 columns">[avatar] {user.name || '[Name unknown]'}</div>
+            <div className="small-3 columns"><img src="/static/images/icon_blank_avatar.svg" className="icon-small-avatar" /> {user.name || '[Name unknown]'}</div>
             <div className="small-3 columns">{skill.name}</div>
             {this.confirmationColumns(skill)}
           </div>

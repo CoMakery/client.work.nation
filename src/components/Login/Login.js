@@ -42,7 +42,7 @@ export default class Login extends React.Component {
             <div className="small-4 columns" />
             <div className="small-6 columns">
               <div className="row">
-                <div className="small-6 columns hero-action text-center">
+                <div className="small-12 medium-6 columns hero-action text-center">
                   <input type="submit" value="sign in with uPort" onClick={this.uportLogin}
                     className="button button-cyan yellow-text button-thin button-fullwidth" />
                   <div className="sign-up-link">
@@ -50,7 +50,7 @@ export default class Login extends React.Component {
                       account ></a>
                   </div>
                 </div>
-                <div className="small-6 columns hero-action">
+                <div className="small-12 medium-6 columns hero-action">
                   <input type="submit" value="browse projects"
                     className="button button-lt-blue yellow-text button-thin button-fullwidth" />
                 </div>
@@ -133,7 +133,7 @@ export default class Login extends React.Component {
                 <h2>3</h2>
               </div>
               <div className="small-3 columns no-padding">
-                <h4>Build engaged talented teams.</h4>
+                <h4>Build engaged and talented teams.</h4>
               </div>
             </div>
           </div>
