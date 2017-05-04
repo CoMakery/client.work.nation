@@ -58,11 +58,11 @@ export default class Profile extends React.Component {
             <h3>Skills</h3>
             <div className="profile-body-list-subheader">
               <div className="row">
-                <div className="small-2 columns small">
+                <div className="small-2 columns small no-padding">
                   confirmations
                 </div>
-                <div className="small-7 columns" />
-                <div className="small-3 columns small">
+                <div className="small-6 columns" />
+                <div className="small-4 columns small text-right">
                   # of projects
                 </div>
               </div>
@@ -85,8 +85,8 @@ export default class Profile extends React.Component {
   }
 
   avatar = () => {
-    if (this.state.avatar_image_ipfs_key) {
-      return <img src={'//ipfs.io/ipfs/' + this.state.avatar_image_ipfs_key} className="profile-photo" />
+    if (this.state.avatarImageIpfsKey) {
+      return <img src={'//ipfs.io/ipfs/' + this.state.avatarImageIpfsKey} className="profile-photo" />
     }
   }
 
