@@ -75,7 +75,7 @@ export default class Confirm extends React.Component {
             </div>
             <div className="confirm-footer">
               {/* <span className="footer-note">to edit multiple, select all you want to confirm</span> */}
-              <input type="button" className="button button-cyan" value="save" />
+              {/* <input type="button" className="button button-cyan" value="save" /> */}
             </div>
           </div>
         </div>
