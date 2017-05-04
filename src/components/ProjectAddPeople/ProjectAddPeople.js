@@ -26,11 +26,14 @@ export default class ProjectAddPeople extends React.Component {
   updateSkill = (skill) => this.setState({skill})
 
   search = () => {
+    document.querySelector('.loading-spinner').style.display = 'block'
     // /users?perspective=0xff902fc776998336a213c5c6050a4572b7453643&skill=UX&depth=4
     const projectsApiUrl = `${process.env.REACT_APP_API_SERVER}/users/?perspective=${Auth.getUportAddress()}&skill=${this.state.skill}&depth=4`
     http.get(projectsApiUrl).then(response => {
       if (isPresent(response.data)) {
         this.setState({people: response.data}, () => d(this.state))
+        document.querySelector('.loading-spinner').style.display = 'none'
+        document.querySelector('.project-body-list').style.display = 'block'
       } else {
         error(`No data found`, `Server URL: ${projectsApiUrl}`)
       }
@@ -65,12 +68,17 @@ export default class ProjectAddPeople extends React.Component {
                       <SkillAutosuggest onValueUpdate={this.updateSkill} />
                     </div>
                   </div>
-                  <div className="small-1 columns skill-search-button-outside">
+                  <div className="small-1 columns no-padding skill-search-button-outside">
                     <div className="skill-search-button-inside">
-                      <img src="/static/images/button_search.svg" className="skill-search-button" />
+                      <img src="/static/images/button_search.svg" onClick={this.search} className="skill-search-button" />
                     </div>
                   </div>
-                  <div className="small-6 columns" />
+                  <div className="small-2 columns no-padding loading-spinner-outside">
+                    <div className="loading-spinner-inside">
+                      <img src="/static/images/loading.gif" className="loading-spinner" />
+                    </div>
+                  </div>
+                  <div className="small-2 columns" />
                 </div>
               </div>
               <div className="project-body-list">

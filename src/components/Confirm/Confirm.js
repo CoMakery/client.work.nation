@@ -30,7 +30,7 @@ export default class Confirm extends React.Component {
       if (isPresent(response.data)) {
         this.setState({users: response.data}) //, () => d(this.state))
         if (response.data.length <= 7) { // up to 7 rows of data for dynamic height
-          this.state.confirmDivHeight = (response.data.length + 1) * 51 // 51px row height with margin spacing
+          this.state.confirmDivHeight = (response.data.length) * 51 // 51px row height with margin spacing
         } else { // beyond 7 rows of data and max-height is reached
           this.state.confirmDivHeight = 380
         }
