@@ -1,15 +1,12 @@
 import {d} from 'lightsaber/lib/log'
 import React from 'react'
 import isPresent from 'is-present'
-// import debug from 'debug'
 
 import {SkillAutosuggest} from '..'
 import Auth from '../../models/Authentication'
 import server from '../../models/Server'
 
-// const error = debug('wn:error')
-
-export default class ProjectAddPeople extends React.Component {
+export default class Search extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -20,7 +17,6 @@ export default class ProjectAddPeople extends React.Component {
 
   componentWillMount() {
     Auth.redirectUnlessLoggedIn(this.props)
-    // TODO also redirect unless current user is project owner
   }
 
   updateSkill = (skill) => this.setState({skill})
@@ -40,10 +36,6 @@ export default class ProjectAddPeople extends React.Component {
     })
   }
 
-  handleCancel = () => {
-    this.props.history.push('/')
-  }
-
   render() {
     if (!Auth.getCurrentUser()) return null
 
@@ -55,13 +47,13 @@ export default class ProjectAddPeople extends React.Component {
           </div>
           <div className="project-container">
             <div className="project-header">
-              <h2 className="">Project Setup</h2>
+              <h2 className="">Search</h2>
             </div>
             <div className="project-body">
               <div className="project-body-subheader">
                 <div className="row">
                   <div className="small-6 columns no-right-padding">
-                    <h3>Search for more team members</h3>
+                    <h3>Search for People by Expertise</h3>
                     <div className="skill-search">
                       <SkillAutosuggest onValueUpdate={this.updateSkill} />
                     </div>
@@ -95,7 +87,7 @@ export default class ProjectAddPeople extends React.Component {
               </div>
             </div>
             <div className="project-footer">
-              <input type="submit" onClick={this.handleCancel} value="no thanks" className="button button-lt-blue" />
+              {/* <input type="submit" onClick={this.handleCancel} value="no thanks" className="button button-lt-blue" /> */}
             </div>
           </div>
         </div>
@@ -132,6 +124,6 @@ export default class ProjectAddPeople extends React.Component {
         </div>
       </div>
     </div>
-  )
+)
 
 }

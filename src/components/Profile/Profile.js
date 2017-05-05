@@ -30,7 +30,7 @@ export default class Profile extends React.Component {
       if (isPresent(response.data)) {
         // d(response.data)
         const newData = omit(response.data, 'uportAddress')
-        this.setState(newData) // , () => d({state: this.state}))
+        this.setState(newData, () => d({state: this.state}))
       } else {
         error(`No data found for user ${this.state.uportAddress}`, `Server URL: ${serverUrl}`)
       }
