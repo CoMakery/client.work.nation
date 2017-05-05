@@ -15,8 +15,8 @@ export default class Profile extends React.Component {
     this.state = {
       uportAddress: this.props.uportAddress,
       name: null,
-      skillClaims: [],
-      errors: [],
+      skills: [],
+      projects: [],
     }
   }
 
@@ -73,9 +73,7 @@ export default class Profile extends React.Component {
           <div className="profile-body-list">
             <h3>Projects</h3>
             <div className="profile-body-list-scroll profile-body-list-scroll-short">
-              <div>Manic Mondays</div>
-              <div>Project Tuesday</div>
-              <div>Lorem Ipsum</div>
+              {this.state.projects.map(project => <div>{project}</div>)}
             </div>
           </div>
         </div>
@@ -90,7 +88,7 @@ export default class Profile extends React.Component {
   }
 
   skills = () => {
-    return this.state.skillClaims.map((skill, index) => {
+    return this.state.skills.map((skill, index) => {
       return [
         <div key={index} className="row">
           <div className="small-2 columns small confirmation-count">
@@ -110,14 +108,10 @@ export default class Profile extends React.Component {
 
   confirmations = (skill) => {
     return [
-      <div key="temporary-key">
+      <div key={skill.name}>
         <p className="tiny">
-          {skill.confirmationsCount} confirmations from
-          Project Neptune: {skill.confirmations.map(conf => conf.confirmerName).join(', ')}
-        </p>
-        <p className="tiny">
-          {skill.confirmationsCount} confirmations from
-          Project Jupiter: {skill.confirmations.map(conf => conf.confirmerName).join(', ')}
+          {skill.confirmationsCount} confirmations from {' '}
+          {skill.confirmations.map(conf => conf.confirmerName).slice(0, 6).join(', ')}...
         </p>
       </div>
     ]
