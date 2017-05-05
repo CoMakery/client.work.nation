@@ -157,7 +157,6 @@ export default class Login extends React.Component {
         </div>
       </div>
       <div className="landing-footer text-center">
-        [footer]
       </div>
     </div>
   }
