@@ -16,12 +16,17 @@ export default class App extends React.Component {
     Auth.getCurrentUserHandler(this.getCurrentUser)
 
     this.state = {
-      currentUser: Auth.getCurrentUser()
+      currentUser: Auth.getCurrentUser(),
+      currentUserFromServer: {},
     }
   }
 
   setCurrentUser = (currentUser) => {
     this.setState({currentUser}) //, () => d(this.state))
+  }
+
+  setCurrentUserFromServer = (currentUserFromServer) => {
+    this.setState({currentUserFromServer}) //, () => d('App', {state: this.state}))
   }
 
   getCurrentUser = () => {
@@ -56,7 +61,7 @@ export default class App extends React.Component {
       return <div className="float-right menu-outside">
         <div className="menu-inside">
           <ul className="menu-items">
-            {(this.state.avatarImageIpfsKey) ? <li><Link to="/home"><img src={'//ipfs.io/ipfs/' + this.state.avatarImageIpfsKey} className="profile-photo" /></Link></li> : <li><Link to="/home"><img src="/static/images/icon_blank_avatar.svg" className="icon-blank-avatar" /></Link></li>}
+            <CurrentUserAvatar currentUserFromServer={this.state.currentUserFromServer} />
             <li><Link to="/confirm"><img src="/static/images/icon_confirmed.svg" className="icon" /></Link></li>
             <li><Link to="/search"><img src="/static/images/icon_search.svg" className="icon" /></Link></li>
             <li><Link to="/project"><img src="/static/images/icon_rocket.svg" className="icon" /></Link></li>
@@ -81,7 +86,7 @@ export default class App extends React.Component {
       <Route exact path="/demo" component={Demo} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/home"
-        render={(props) => <Home {...props} currentUser={this.state.currentUser} />}
+        render={(props) => <Home {...props} currentUser={this.state.currentUser} setCurrentUserFromServerHandler={this.setCurrentUserFromServer} />}
       />
       <Route exact path="/confirm"
         render={(props) => <Confirm {...props} currentUser={this.state.currentUser} />}
@@ -107,4 +112,21 @@ export default class App extends React.Component {
       </div>
     </div>
   )
+}
+
+const CurrentUserAvatar = ({currentUserFromServer}) => {
+  if (currentUserFromServer.avatarImageIpfsKey) {
+    return <li>
+      <Link to="/home">
+        <img src={'//ipfs.io/ipfs/' + currentUserFromServer.avatarImageIpfsKey}
+          className="profile-photo" />
+      </Link>
+    </li>
+  } else {
+    return <li>
+      <Link to="/home">
+        <img src="/static/images/icon_blank_avatar.svg" className="icon-blank-avatar" />
+      </Link>
+    </li>
+  }
 }

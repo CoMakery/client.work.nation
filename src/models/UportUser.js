@@ -30,6 +30,7 @@ export default class UportUser {
       // notifications: true
     )
     .then((credentials) => {
+      // d('UportUser.login', {credentials})
       Auth.setCurrentUser(credentials)
       return credentials
     }).catch(console.error)
