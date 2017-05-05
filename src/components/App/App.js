@@ -101,18 +101,19 @@ export default class App extends React.Component {
         render={(props) => <ProjectAddPeople {...props} currentUser={this.state.currentUser} />}
       />
       <Route exact path="/logout" component={Logout} />
-      <Route component={this.RouteNotFound} />
+      <Route component={RouteNotFound} />
     </Switch>
   }
 
-  RouteNotFound = ({ location }) => (
-    <div>
-      <div className="callout alert">
-        <h5>Nothing found at <code>{location.pathname}</code></h5>
-      </div>
-    </div>
-  )
 }
+
+const RouteNotFound = ({ location }) => (
+  <div>
+    <div className="callout alert">
+      <h5>Nothing found at <code>{location.pathname}</code></h5>
+    </div>
+  </div>
+)
 
 const CurrentUserAvatar = ({currentUserFromServer}) => {
   if (currentUserFromServer.avatarImageIpfsKey) {
