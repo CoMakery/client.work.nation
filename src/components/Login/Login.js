@@ -41,7 +41,7 @@ export default class Login extends React.Component {
           <div className="row">
             <div className="small-4 columns" />
             <div className="small-8 columns">
-              <h3 className="tagline">build a global reputation</h3>
+              <h3 className="tagline">build a global professional reputation</h3>
               <h3 className="tagline">powered by the blockchain</h3>
             </div>
           </div>
@@ -92,14 +92,14 @@ export default class Login extends React.Component {
             <div className="small-1 columns" />
             <div className="small-5 columns">
               <h4 className="headline">For indviduals</h4>
-              <h4 className="description">Build your project based reputation.
+              <h4 className="description">Build your project based professional reputation.
                 Take your reputation with you to new organizations. Find cool
                 projects.</h4>
             </div>
             <div className="small-5 columns">
               <h4 className="headline">For companies</h4>
               <h4 className="description">Find talented and motivated people.
-                Discover the capacity of your teams. Reach your organizational
+                Discover the capacity of your teams. Boost your organizational
                 potential.</h4>
             </div>
             <div className="small-1 columns" />
@@ -129,7 +129,7 @@ export default class Login extends React.Component {
                 <h2>1</h2>
               </div>
               <div className="small-3 columns no-padding">
-                <h4>Get recognized for your expertise on projects.</h4>
+                <h4>Get recognized for your contribution on projects.</h4>
               </div>
               <div className="small-1 columns text-right">
                 <h2>2</h2>
