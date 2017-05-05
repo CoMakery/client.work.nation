@@ -74,7 +74,7 @@ export default class Profile extends React.Component {
           <div className="profile-body-list">
             <h3>Projects</h3>
             <div className="profile-body-list-scroll profile-body-list-scroll-short">
-              {this.state.projects.map(project => <div>{project}</div>)}
+              {this.state.projects.map(project => <div key={project}>{project}</div>)}
             </div>
           </div>
         </div>
