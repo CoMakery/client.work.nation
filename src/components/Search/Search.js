@@ -2,7 +2,7 @@ import {d} from 'lightsaber/lib/log'
 import React from 'react'
 import isPresent from 'is-present'
 
-import {SkillAutosuggest} from '..'
+import {Avatar, SkillAutosuggest} from '..'
 import Auth from '../../models/Authentication'
 import server from '../../models/Server'
 
@@ -100,7 +100,7 @@ export default class Search extends React.Component {
     <div className="project-body-list-row" key={person.uportAddress}>
       <div className="row">
         <div className="small-3 columns">
-          <img src={'//ipfs.io/ipfs/' + person.avatarImageIpfsKey} className="profile-photo" />
+          <Avatar avatarImageIpfsKey={person.avatarImageIpfsKey} name={person.name} />
           <span className="name">{person.name}</span>
         </div>
         <div className="small-3 columns">

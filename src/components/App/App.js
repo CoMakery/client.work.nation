@@ -4,7 +4,7 @@ import {BrowserRouter, Link, Route, Switch} from 'react-router-dom'
 import MetaTags from 'react-meta-tags'
 
 import Auth from '../../models/Authentication'
-import {Confirm, Demo, Home, Login, Logout, Project, ProjectAddPeople, Root, Search} from '..'
+import {Avatar, Confirm, Demo, Home, Login, Logout, Project, ProjectAddPeople, Root, Search} from '..'
 import '../../../node_modules/foundation-sites/dist/css/foundation-flex.css'  // Foundation with FlexGrid: http://foundation.zurb.com/sites/docs/flex-grid.html
 import './App.scss'
 
@@ -61,7 +61,7 @@ export default class App extends React.Component {
       return <div className="float-right menu-outside">
         <div className="menu-inside">
           <ul className="menu-items">
-            <CurrentUserAvatar currentUserFromServer={this.state.currentUserFromServer} />
+            <li><Link to="/home"><Avatar avatarImageIpfsKey={this.state.currentUserFromServer.avatarImageIpfsKey} /></Link></li>
             <li><Link to="/confirm"><img src="/static/images/icon_confirmed.svg" className="icon" /></Link></li>
             <li><Link to="/search"><img src="/static/images/icon_search.svg" className="icon" /></Link></li>
             <li><Link to="/project"><img src="/static/images/icon_rocket.svg" className="icon" /></Link></li>
@@ -114,20 +114,3 @@ const RouteNotFound = ({ location }) => (
     </div>
   </div>
 )
-
-const CurrentUserAvatar = ({currentUserFromServer}) => {
-  if (currentUserFromServer.avatarImageIpfsKey) {
-    return <li>
-      <Link to="/home">
-        <img src={'//ipfs.io/ipfs/' + currentUserFromServer.avatarImageIpfsKey}
-          className="profile-photo" />
-      </Link>
-    </li>
-  } else {
-    return <li>
-      <Link to="/home">
-        <img src="/static/images/icon_blank_avatar.svg" className="icon-blank-avatar" />
-      </Link>
-    </li>
-  }
-}

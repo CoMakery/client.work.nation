@@ -1,4 +1,5 @@
 export App from './App/App'
+export Avatar from './Avatar/Avatar'
 export ClaimSkill from './ClaimSkill/ClaimSkill'
 export Confirm from './Confirm/Confirm'
 export Demo from './Demo/Demo'
