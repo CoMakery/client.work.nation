@@ -137,7 +137,7 @@ export default class UportUser {
           if (error) {
             return reject(error)
           } else {
-            console.log('https://ropsten.io/tx/' + txhash)
+            this.onEthereumClaimSuccess(txhash)
             return resolve(txhash)
           }
         })
@@ -146,7 +146,7 @@ export default class UportUser {
           if (error) {
             return reject(error)
           } else {
-            console.log('https://ropsten.io/tx/' + txhash)
+            this.onEthereumClaimSuccess(txhash)
             return resolve(txhash)
           }
         })
@@ -155,6 +155,43 @@ export default class UportUser {
       }
     })
   }
+
+  static onEthereumClaimSuccess(txhash) {
+    console.log('https://ropsten.io/tx/' + txhash)
+    // this should probably be done by uPort but is not, so we hide QR codes manually:
+    for (const qrCodeElement of document.querySelectorAll('#uport-wrapper')) {
+      qrCodeElement.style.display = 'none'
+    }
+  }
+
+  // DOESN'T WORK, BUT SHOULD:
+  //
+  // static createEthereumClaim(...ipfsKeys) {
+  //   d('creating claim...')
+  //   return new Promise((resolve, reject) => {
+  //     let functionName
+  //     if (ipfsKeys.length === 1) {
+  //       functionName = 'put'
+  //     } else if (ipfsKeys.length === 2) {
+  //       functionName = 'put2'
+  //     } else {
+  //       return reject('1 or 2 IPFS keys supported, got: ' + ipfsKeys)
+  //     }
+  //     const claimFunction = claims[functionName]
+  //     claimFunction(...ipfsKeys, (error, txhash) => {
+  //       if (error) {
+  //         return reject(error)
+  //       } else {
+  //         console.log('https://ropsten.io/tx/' + txhash)
+  //         // this should probably be done by uPort but is not, so we remove QR codes manually:
+  //         for (const qrCodeElement of document.querySelectorAll('#uport-wrapper')) {
+  //           qrCodeElement.remove()
+  //         }
+  //         return resolve(txhash)
+  //       }
+  //     })
+  //   })
+  // }
 
   // static isValidAddress(candidate) {
   //   return /(0x)?[0-9a-fA-F]{40}/.test(candidate)

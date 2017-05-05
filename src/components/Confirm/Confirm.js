@@ -29,6 +29,7 @@ export default class Confirm extends React.Component {
     const serverUrl = `${process.env.REACT_APP_API_SERVER}/users/${Auth.getUportAddress()}/confirmables`
     server.get(serverUrl).then(response => {
       if (isPresent(response.data)) {
+        // d(response.data)
         this.setState({skillClaims: response.data}) //, () => d(this.state))
         if (response.data.length <= 7) { // up to 7 rows of data for dynamic height
           this.state.confirmDivHeight = (response.data.length) * 51 // 51px row height with margin spacing
@@ -88,7 +89,7 @@ export default class Confirm extends React.Component {
     return <div className="confirm-body-row-wrapper" key={skillClaim.ipfsReputonKey}>
       <div className="row confirm-body-row">
         <div className="small-2 columns">{moment(skillClaim.createdAt).format('DD MMM YYYY')}</div>
-        <div className="small-3 columns">[Project Name]</div>
+        <div className="small-3 columns">{skillClaim.project.name}</div>
         <div className="small-3 columns">
           <img src="/static/images/icon_blank_avatar.svg" className="icon-small-avatar" />
           {skillClaim.user.name || '[Name unknown]'}
