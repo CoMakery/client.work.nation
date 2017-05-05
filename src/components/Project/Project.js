@@ -70,7 +70,7 @@ export default class Project extends React.Component {
                     <input type="text" id="contact" value={this.state.contact} onChange={this.updateOptions} placeholder="email address for prototype. (2.0: uPort address only (project owner))" />
                   </label>
                   <label>
-                    <span>Skill Sets</span>
+                    <span>Desired Expertise</span>
                     <input type="text" id="skills" value={this.state.skills} onChange={this.updateOptions} placeholder="separate by comma" />
                   </label>
                 </div>

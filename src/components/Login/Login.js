@@ -129,7 +129,7 @@ export default class Login extends React.Component {
                 <h2>1</h2>
               </div>
               <div className="small-3 columns no-padding">
-                <h4>Get recognized for the skill you use on projects.</h4>
+                <h4>Get recognized for your expertise on projects.</h4>
               </div>
               <div className="small-1 columns text-right">
                 <h2>2</h2>

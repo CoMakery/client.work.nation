@@ -65,7 +65,7 @@ export default class Confirm extends React.Component {
                   <div className="small-2 columns">Date</div>
                   <div className="small-3 columns">Project Name</div>
                   <div className="small-3 columns">Team Member</div>
-                  <div className="small-3 columns">Skill</div>
+                  <div className="small-3 columns">Expertise</div>
                   <div className="small-1 columns">Confirm</div>
                 </div>
               </div>
