@@ -67,7 +67,7 @@ export default class ProjectAutosuggest extends React.Component {
     if (inputLength === 0) return []
 
     const suggestions = this.state.options.filter(option =>
-      option.name.toLowerCase().slice(0, inputLength) === inputValue
+      option.name && (option.name.toLowerCase().slice(0, inputLength) === inputValue)
     )
     return (suggestions.length === 0) ? [{name: SETUP_PROJECT, permanodeId: ''}] : suggestions
   }
