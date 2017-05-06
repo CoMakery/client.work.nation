@@ -2,7 +2,7 @@ import {d} from 'lightsaber/lib/log'
 import React from 'react'
 
 export default ({avatarImageIpfsKey}) => {
-  d({avatarImageIpfsKey})
+  // d({avatarImageIpfsKey})
   if (avatarImageIpfsKey && !avatarImageIpfsKey.match(/^QmAVATAR/)) {
     return <img src={'//ipfs.io/ipfs/' + avatarImageIpfsKey} className="profile-photo" />
   } else {
