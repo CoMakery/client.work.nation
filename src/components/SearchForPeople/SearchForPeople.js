@@ -130,7 +130,7 @@ export default class SearchForPeople extends React.Component {
           </ul>
         </div>
         <div className="small-3 columns text-right">
-          <textarea placeholder="enter message here" />
+          <textarea placeholder="Note: messaging is not enabled for this demo" />
           <img className="icon-message" src="/static/images/icon_message.svg" />
         </div>
       </div>

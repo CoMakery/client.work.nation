@@ -43,6 +43,7 @@ export default class Login extends React.Component {
             <div className="small-8 columns">
               <h3 className="tagline">build a global professional reputation</h3>
               <h3 className="tagline">powered by the blockchain</h3>
+              <h3 className="tagline-alert">&lt;demo prototype&gt;</h3>
             </div>
           </div>
           <div className="row">
