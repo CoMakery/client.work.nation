@@ -137,7 +137,7 @@ export default class UportUser {
           if (error) {
             return reject(error)
           } else {
-            this.onEthereumClaimSuccess(txhash)
+            console.log('https://ropsten.io/tx/' + txhash)
             return resolve(txhash)
           }
         })
@@ -146,7 +146,7 @@ export default class UportUser {
           if (error) {
             return reject(error)
           } else {
-            this.onEthereumClaimSuccess(txhash)
+            console.log('https://ropsten.io/tx/' + txhash)
             return resolve(txhash)
           }
         })
@@ -156,15 +156,7 @@ export default class UportUser {
     })
   }
 
-  static onEthereumClaimSuccess(txhash) {
-    console.log('https://ropsten.io/tx/' + txhash)
-    // this should probably be done by uPort but is not, so we hide QR codes manually:
-    for (const qrCodeElement of document.querySelectorAll('#uport-wrapper')) {
-      qrCodeElement.style.display = 'none'
-    }
-  }
-
-  // DOESN'T WORK, BUT SHOULD:
+  // REFACTORED VERSION; DOESN'T WORK, SEEMS LIKE IT SHOULD:
   //
   // static createEthereumClaim(...ipfsKeys) {
   //   d('creating claim...')
@@ -183,10 +175,6 @@ export default class UportUser {
   //         return reject(error)
   //       } else {
   //         console.log('https://ropsten.io/tx/' + txhash)
-  //         // this should probably be done by uPort but is not, so we remove QR codes manually:
-  //         for (const qrCodeElement of document.querySelectorAll('#uport-wrapper')) {
-  //           qrCodeElement.remove()
-  //         }
   //         return resolve(txhash)
   //       }
   //     })

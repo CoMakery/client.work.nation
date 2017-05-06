@@ -15,10 +15,6 @@ export default class ClaimSkill extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    // remove any leftover QR code elements...
-    for (const qrCodeElement of document.querySelectorAll('#uport-wrapper')) {
-      qrCodeElement.remove()
-    }
     UportUser.claimSkill(this.state.skill, this.state.projectId)
   }
 
