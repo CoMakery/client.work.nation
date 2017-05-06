@@ -632,11 +632,14 @@ ul.react-autosuggest__suggestions-list {
 
 /* PROFILE page styling */
 
-.profile-container {
-  background-color: $white;
+.profile-container, .profile-placeholder {
   width: 450px;
   height: 750px; //TODO FIXME - ideally should be 100% window height
   padding: 50px 25px 25px 25px;
+}
+
+.profile-container {
+  background-color: $white;
   h2 {
     font-size: 24px;
     font-weight: bold;

@@ -4,6 +4,7 @@ import {d} from 'lightsaber/lib/log'
 import React from 'react'
 import debug from 'debug'
 
+import {Avatar} from '..'
 import server from '../../models/Server'
 
 const error = debug('wn:error')
@@ -21,6 +22,15 @@ export default class Profile extends React.Component {
   }
 
   componentDidMount() {
+    this.updateFromServer()
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const {uportAddress} = nextProps
+    if (uportAddress) this.setState({uportAddress}, () => this.updateFromServer())
+  }
+
+  updateFromServer = () => {
     if (!this.state.uportAddress) {
       error(`Can't load user "${this.state.uportAddress}"`)
       return
@@ -29,7 +39,9 @@ export default class Profile extends React.Component {
     server.get(serverUrl).then(response => {
       if (isPresent(response.data)) {
         // d(response.data)
-        this.props.setCurrentUserFromServerHandler(response.data)
+        if (this.props.setCurrentUserFromServerHandler) {
+          this.props.setCurrentUserFromServerHandler(response.data)
+        }
         const newData = omit(response.data, 'uportAddress')
         this.setState(newData) // , () => d('Profile', {state: this.state}))
       } else {
@@ -44,12 +56,13 @@ export default class Profile extends React.Component {
         <div className="profile-header">
           <div className="row">
             <div className="small-2 columns no-padding text-center">
-              { this.avatar() }
+              <Avatar avatarImageIpfsKey={this.state.avatarImageIpfsKey} />
             </div>
             <div className="small-10 columns">
               <h2 className="">{this.state.name}</h2>
-              <div className="small"><a href={'#'}>view reputon data</a></div>
-              <div className="small"><a href={'https://ropsten.io/address/' + this.state.uportAddress} target="_blank">view uPort Ethereum contract</a></div>
+              {/* <div className="small"><a href={'#'}>view reputon data</a></div> */}
+              <div className="small"><a href={'https://ropsten.io/address/' + this.state.uportAddress}
+                target="_blank">view uPort Ethereum contract</a></div>
             </div>
           </div>
         </div>
@@ -80,12 +93,6 @@ export default class Profile extends React.Component {
         </div>
       </div>
     )
-  }
-
-  avatar = () => {
-    if (this.state.avatarImageIpfsKey) {
-      return <img src={'//ipfs.io/ipfs/' + this.state.avatarImageIpfsKey} className="profile-photo" />
-    }
   }
 
   skills = () => {
