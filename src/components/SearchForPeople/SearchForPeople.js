@@ -17,7 +17,7 @@ export default class SearchForPeople extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({skill: 'Ruby'}, () => this.search())
+    // this.setState({skill: 'Ruby'}, () => this.search())
   }
 
   updateSkill = (skill) => this.setState({skill})
