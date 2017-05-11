@@ -27,7 +27,9 @@ export default class Profile extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     const {uportAddress} = nextProps
-    if (uportAddress) this.setState({uportAddress}, () => this.updateFromServer())
+    if (uportAddress && uportAddress !== this.state.uportAddress) {
+      this.setState({uportAddress}, () => this.updateFromServer())
+    }
   }
 
   updateFromServer = () => {
