@@ -2,9 +2,12 @@
 
 [![Build Status](https://travis-ci.org/worknation/client.work.nation.svg?branch=master)](https://travis-ci.org/worknation/client.work.nation)
 
-<!-- ## Live demo -->
 
-<!-- https://demo.worknation.io -->
+For a general overview of Work.nation, see <https://github.com/worknation/work.nation>.
+
+## Live demo
+
+https://demo.worknation.io
 
 ## Local development
 
