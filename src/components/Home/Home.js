@@ -1,4 +1,4 @@
-import { d } from 'lightsaber/lib/log'
+import {d} from 'lightsaber/lib/log'
 import React from 'react'
 
 import Auth from '../../models/Authentication'

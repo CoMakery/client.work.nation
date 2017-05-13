@@ -58,7 +58,7 @@ export default class Confirm extends React.Component {
           </div>
           <div className="confirm-container">
             <div className="confirm-header">
-              <h2 className="">Confirmation Feed</h2>
+              <h2 className="">Did these team members make the contributions they claimed?</h2>
             </div>
             <div className="confirm-body">
               <div className="confirm-body-subheader">
@@ -66,7 +66,7 @@ export default class Confirm extends React.Component {
                   <div className="small-2 columns">Date</div>
                   <div className="small-3 columns">Project Name</div>
                   <div className="small-3 columns">Team Member</div>
-                  <div className="small-3 columns">Expertise</div>
+                  <div className="small-3 columns">Contribution</div>
                   <div className="small-1 columns">Confirm</div>
                 </div>
               </div>

@@ -67,11 +67,11 @@ export default class Project extends React.Component {
                   </label>
                   <label>
                     <span>Project Contact</span>
-                    <input type="text" id="contact" value={this.state.contact} onChange={this.updateOptions} placeholder="email address for prototype. (2.0: uPort address only (project owner))" />
+                    <input type="text" id="contact" value={this.state.contact} onChange={this.updateOptions} placeholder="email or uport address" />
                   </label>
                   <label>
-                    <span>Desired Expertise</span>
-                    <input type="text" id="skills" value={this.state.skills} onChange={this.updateOptions} placeholder="separate by comma" />
+                    <span>Kind of Contributions Needed</span>
+                    <input type="text" id="skills" value={this.state.skills} onChange={this.updateOptions} placeholder="Separated by comma. Example: 'Ruby','UX'" />
                   </label>
                 </div>
                 <div className="small-4 columns">

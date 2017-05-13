@@ -91,7 +91,7 @@ export default class ProjectAutosuggest extends React.Component {
 
   render() {
     const inputProps = {
-      placeholder: 'Which project did you apply this expertise to?',
+      placeholder: 'Which project did you contribute this to?',
       value: this.state.value,
       onChange: this.onChange,
     }

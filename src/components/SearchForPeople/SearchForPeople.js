@@ -83,11 +83,11 @@ export default class SearchForPeople extends React.Component {
                 <div className="project-body-list">
                   <div className="project-body-list-subheader">
                     <div className="row">
-                      <div className="small-3 columns">candidate</div>
-                      <div className="small-3 columns">skill</div>
-                      <div className="small-1 columns text-center">confirmations</div>
+                      <div className="small-3 columns">Candidate</div>
+                      <div className="small-3 columns">Contribution</div>
+                      <div className="small-1 columns text-center">Confirmations</div>
                       <div className="small-2 columns text-center"># of projects</div>
-                      <div className="small-3 columns">invite</div>
+                      <div className="small-3 columns">Invite</div>
                     </div>
                   </div>
                   <div className="project-body-list-scroll">

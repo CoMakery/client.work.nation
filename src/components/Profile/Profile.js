@@ -70,7 +70,7 @@ export default class Profile extends React.Component {
         </div>
         <div className="profile-body">
           <div className="profile-body-list">
-            <h3>Skills</h3>
+            <h3>Contributions</h3>
             <div className="profile-body-list-subheader">
               <div className="row">
                 <div className="small-2 columns small no-padding">
