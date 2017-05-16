@@ -18,7 +18,7 @@ export default class Home extends React.Component {
         <div className="float-right">
           <Profile {...this.props} uportAddress={Auth.getUportAddress(this.props)} />
         </div>
-        <div className="claim-skill-container">
+        <div className="claim-skill-container home-container">
           <h1 className="project-name">work.nation</h1>
           <ClaimSkill {...this.props} />
         </div>

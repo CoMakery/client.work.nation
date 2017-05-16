@@ -48,7 +48,7 @@ export default class SearchForPeople extends React.Component {
           {this.renderProfile()}
         </div>
 
-        <div className="row">
+        <div className="row search-for-people-container">
           <div className="small-12 columns">
 
             <div className="claim-skill-container">
