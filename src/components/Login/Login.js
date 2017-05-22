@@ -107,7 +107,7 @@ export default class Login extends React.Component {
           </div>
           <div className="row">
             <div className="small-12 columns text-center github">
-              <a href="https://github.com/worknation" target="_blank">
+              <a href="https://github.com/worknation/work.nation" target="_blank">
                 <img src="/static/images/icon_github.svg"
                   className="icon-github" />
               </a>
