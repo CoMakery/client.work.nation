@@ -14,7 +14,7 @@ export default class Search extends React.Component {
 
     return <SearchForPeople
       title="Search"
-      subtitle="Search for people by the kind of work they contributed to projects"
+      subtitle="Search for people by contribution"
     />
   }
 }

@@ -68,7 +68,7 @@ export default class SkillAutosuggest extends React.Component {
 
   render() {
     const inputProps = {
-      placeholder: 'Kind of work contributed: UX, Javascript, ...',
+      placeholder: 'Contribution: UX, Javascript, ...',
       value: this.state.value,
       onChange: this.onChange,
     }

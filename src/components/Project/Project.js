@@ -70,7 +70,7 @@ export default class Project extends React.Component {
                     <input type="text" id="contact" value={this.state.contact} onChange={this.updateOptions} placeholder="email or uport address" />
                   </label>
                   <label>
-                    <span>Kind of Contributions Needed</span>
+                    <span>Desired Contribution</span>
                     <input type="text" id="skills" value={this.state.skills} onChange={this.updateOptions} placeholder="Separated by comma. Example: 'Ruby','UX'" />
                   </label>
                 </div>
