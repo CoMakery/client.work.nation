@@ -117,11 +117,11 @@ export default class Login extends React.Component {
           </div>
         </div>
       </div>
-      {/* <div className="landing-video"> */}
-      {/* <div className="video-container"> */}
-      {/* <h3 className="intro-video">introductory video</h3> */}
-      {/* </div> */}
-      {/* </div> */}
+      <div className="landing-video">
+        <div className="video-container">
+          <iframe width="900" height="515" src="https://www.youtube.com/embed/7acjxI_OlOk" frameBorder="0" allowFullScreen />
+        </div>
+      </div>
       <div className="landing-get-started">
         <h3 className="text-center">Get Started</h3>
         <div className="row">
