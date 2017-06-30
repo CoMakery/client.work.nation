@@ -93,15 +93,17 @@ export default class Login extends React.Component {
             <div className="small-1 columns" />
             <div className="small-5 columns">
               <h4 className="headline">For indviduals</h4>
-              <h4 className="description">Build your project based professional reputation.
-                Take your reputation with you to new organizations. Find cool
-                projects.</h4>
+              <h4 className="description">Build your project based professional
+                portfolio. Share your contributions and let others confirm them.
+                Take them with you wherever you go.
+              </h4>
             </div>
             <div className="small-5 columns">
               <h4 className="headline">For companies</h4>
-              <h4 className="description">Find talented and motivated people.
-                Discover the capacity of your teams. Boost your organizational
-                potential.</h4>
+              <h4 className="description">
+              Create cool projects for the community. Appreciate the contributions of your
+                people. Connect with smart talent beyond borders.
+              </h4>
             </div>
             <div className="small-1 columns" />
           </div>
