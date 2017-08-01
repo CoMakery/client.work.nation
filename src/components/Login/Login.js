@@ -119,7 +119,7 @@ export default class Login extends React.Component {
       </div>
       <div className="landing-video">
         <div className="video-container">
-          <iframe width="900" height="515" src="https://www.youtube.com/embed/7acjxI_OlOk" frameBorder="0" allowFullScreen />
+          <iframe width="900" height="515" src="https://www.youtube.com/embed/tyjEPdtH5pY" frameBorder="0" allowFullScreen />
         </div>
       </div>
       <div className="landing-get-started">
