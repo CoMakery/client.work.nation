@@ -63,7 +63,7 @@ export default class Profile extends React.Component {
             <div className="small-10 columns">
               <h2 className="">{this.state.name}</h2>
               {/* <div className="small"><a href={'#'}>view reputon data</a></div> */}
-              <div className="small"><a href={'https://ropsten.io/address/' + this.state.uportAddress}
+              <div className="small"><a href={'https://rinkeby.etherscan.io/address/' + this.state.uportAddress}
                 target="_blank">view uPort Ethereum contract</a></div>
             </div>
           </div>

@@ -16,7 +16,7 @@ const clientId = '0x09f8cffb288b2dbb0db6050abb51f18d112798a4'
 const connect = new Connect(appName, { clientId })
 const web3 = connect.getWeb3()
 
-const contractAddress = '0x0ac188eb03917623292784dfc01e5e330e684fc4'
+const contractAddress = '0xc0ebebbd9462cb25dec27b576bbdb620dd0e0404'  // on Rinkeby
 const contractAbi = [{"constant":false,"inputs":[{"name":"claim","type":"string"}],"name":"getSigner","outputs":[{"name":"_signer","type":"address"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_claim","type":"string"}],"name":"put","outputs":[{"name":"_success","type":"bool"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"index","type":"uint256"}],"name":"getClaim","outputs":[{"name":"_claim","type":"string"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_claim1","type":"string"},{"name":"_claim2","type":"string"}],"name":"put2","outputs":[{"name":"_success","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"claimCount","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"claims","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"constant":false,"inputs":[],"name":"whoami","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"payable":false,"type":"fallback"}]  // eslint-disable-line
 const claimContract = web3.eth.contract(contractAbi)
 const claims = claimContract.at(contractAddress)
@@ -137,7 +137,7 @@ export default class UportUser {
           if (error) {
             return reject(error)
           } else {
-            console.log('https://ropsten.io/tx/' + txhash)
+            console.log('https://rinkeby.etherscan.io/tx/' + txhash)
             return resolve(txhash)
           }
         })
@@ -146,7 +146,7 @@ export default class UportUser {
           if (error) {
             return reject(error)
           } else {
-            console.log('https://ropsten.io/tx/' + txhash)
+            console.log('https://rinkeby.etherscan.io/tx/' + txhash)
             return resolve(txhash)
           }
         })
@@ -174,7 +174,7 @@ export default class UportUser {
   //       if (error) {
   //         return reject(error)
   //       } else {
-  //         console.log('https://ropsten.io/tx/' + txhash)
+  //         console.log('https://rinkeby.etherscan.io/tx/' + txhash)
   //         return resolve(txhash)
   //       }
   //     })
