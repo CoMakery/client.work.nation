@@ -10,13 +10,9 @@ if (argv.length !== 3) {
 }
 
 const appName = argv[2]
+// const surgeApp = `client-worknation-${appName}`
 
-const herokuApp = `client-worknation-${appName}`
-const herokuRemote = `https://git.heroku.com/${herokuApp}.git`
-// const herokuRemote = `git@heroku.com:${herokuApp}.git`
-// run('git fetch --unshallow', {relaxed: true})  // Some CI services fetches git shallowly, which can cause failures pushing to heroku
-const deployResult = run(`git push --force ${herokuRemote} HEAD:refs/heads/master`, {relaxed: true}).code
-const restart = `heroku restart --app ${herokuApp}`  // sometimes deploys and config changes do not trigger restart!
-run([restart, restart, restart, restart, restart, restart, restart].join(' || '))
-
-process.exit(deployResult)
+run(`rm -rf ./build`)
+run(`REACT_APP_API_SERVER=https://worknation-${appName}.herokuapp.com yarn build`)
+run('mv build/index.html build/200.html')
+run(`surge build --domain ${appName}.worknation.io`)
