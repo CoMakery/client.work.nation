@@ -11,7 +11,7 @@
     "check-yarn:ci": "git checkout yarn.lock && yarn check",
     "ci": "yarn lint:ci && yarn check-yarn:ci && yarn build",
     "dev": "yarn start",
-    "lint": "yarn lint:ci -- --fix",
+    "lint": "yarn lint:ci --fix",
     "lint:ci": "eslint --ignore-pattern '!.eslintrc.js' .eslintrc.js src",
     "postinstall": "npm rebuild node-sass",
     "pre-push": "yarn lint && yarn check-clean && yarn check-yarn",
