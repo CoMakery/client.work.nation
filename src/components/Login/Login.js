@@ -193,9 +193,12 @@ export default class Login extends React.Component {
               It demonstrates the fundamental feasibility and functionality of a portable professional
               portfolio utilizing a blockchain architecture. work.nation at its core allows the creation of claims
               (of contributions to projects) and confirmations (of these contributions) as signed claims, using
-              <a target="_blank" href="https://www.uport.me/">&nbsp;uPort</a> +
-              <a target="_blank" href="https://ipfs.io/">&nbsp;IPFS</a> +
-              <a target="_blank" href="https://ethereum.org/">&nbsp;Ethereum</a>
+              {' '}
+              <a target="_blank" href="https://www.uport.me/">uPort</a> +
+              {' '}
+              <a target="_blank" href="https://ipfs.io/">IPFS</a> +
+              {' '}
+              <a target="_blank" href="https://ethereum.org/">Ethereum</a>
               .
             </p>
 
@@ -204,16 +207,25 @@ export default class Login extends React.Component {
             </h3>
             <p>
               work.nation evolved from concepts outlined in
+              {' '}
               <a target="_blank" href="https://www.slideshare.net/slideshow/embed_code/key/BPZO0crUSvTGcW">
-                &nbsp;"When Work Is No Longer Work"
-              </a> (Nov 2016) and
+                "When Work Is No Longer Work"
+              </a> (Nov 2016),
+              {' '}
               <a target="_blank" href="https://www.fowcommunity.com/fowc-ebook">
-                &nbsp;"21st Century World of Work: Reputation-Based Culture Powered by Blockchain Technology"
+                "21st Century World of Work: Reputation-Based Culture Powered by Blockchain Technology"
               </a> (Oct 2016) and the
+              {' '}
               <a target="_blank" href="https://github.com/WebOfTrustInfo/rebooting-the-web-of-trust-fall2016/blob/master/final-documents/reputation-toolkit.pdf">
-                &nbsp;"Portable Reputation Toolkit Use Cases"
+                "Portable Reputation Toolkit Use Cases"
               </a>
-              &nbsp;whitepaper (Feb 2017), then took on a life of its own.
+              {' '}
+              whitepaper (Feb 2017), then took on a life of its own.
+              work.nation incorporates technologies, ideas and lessons learned from the development of
+              {' '}
+              <a target="_blank" href="https://trustgraph.io">Trust Graph</a>
+              {' '}
+              over the last several years.
             </p>
 
             <h3>
@@ -240,8 +252,8 @@ export default class Login extends React.Component {
             <p>
               <i>A Professional Contributor</i> works for an <i>Organization</i> on a <i>Project</i> with a <i>Fellow Contributor</i>
               <ol>
-                <li><i>Fellow Contributor</i> provide attestion of <i>Professional Contributor's</i> contribution on <i>Project 1</i></li>
-                <li><i>Professional Contributor</i> provides attestion of <i>Fellow Contributor's</i> contribution on <i>Project 1</i></li>
+                <li><i>Fellow Contributor</i> provide attestation of <i>Professional Contributor's</i> contribution on <i>Project 1</i></li>
+                <li><i>Professional Contributor</i> provides attestation of <i>Fellow Contributor's</i> contribution on <i>Project 1</i></li>
                 <li><i>Organization</i> uses attestations to determine staffing on <i>Project N</i></li>
                 <li><i>Professional Contributor</i> and <i>Fellow Contributor</i> use attestations of contributor membership of <i>Project N</i> to determine which roles to accept</li>
                 <li>external contributors use attestations of contributor membership of <i>Project N</i> to influence funding decisions</li>
@@ -262,8 +274,7 @@ export default class Login extends React.Component {
               ) and co-developed by
               <a target="_blank" href="https://www.comakery.com"> CoMakery </a>
               (
-              <a href="mailto:noah@comakery.com">Noah Thorp</a>, Harlan Wood, and Kathrine Olson
-              )
+              <a href="mailto:noah@comakery.com">Noah Thorp</a>, Harlan Wood, and Kathrine Olson)
               and
               <a target="_blank" href="https://www.consensys.net"> ConsenSys </a>
               (
